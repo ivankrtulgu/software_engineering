@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вход — TechCare</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #212529;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .auth-container {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .auth-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 32px;
+    }
+
+    .auth-logo h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #212529;
+      text-align: center;
+    }
+
+    .auth-logo p {
+      font-size: 15px;
+      color: #6c757d;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .auth-form-group {
+      margin-bottom: 20px;
+    }
+
+    .auth-form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #495057;
+    }
+
+    .auth-form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .auth-form-group input:focus {
+      outline: none;
+      border-color: #6c5ce7;
+      box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+    }
+
+    .auth-switch {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #6c757d;
+    }
+
+    .auth-switch a {
+      color: #6c5ce7;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .auth-switch a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn--primary {
+      background-color: #6c5ce7;
+      color: #fff;
+    }
+
+    .btn--primary:hover {
+      background-color: #5a4bcf;
+    }
+
+    .auth-form {
+      display: none;
+    }
+
+    .auth-form.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <h1>Сервис СОФТ</h1>
+        <p>Сервисный центр по ремонту техники</p>
+      </div>
+
+      <form id="loginForm" class="auth-form active">
+        <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center;">Вход в аккаунт</h2>
+        <div class="auth-form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" name="email" required autocomplete="username">
+        </div>
+        <div class="auth-form-group">
+          <label for="loginPassword">Пароль</label>
+          <input type="password" id="loginPassword" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn--primary">Войти</button>
+      </form>
+
+      <form id="registerForm" class="auth-form">
+        <h2 style="font-size: 20px; font-weight: 600; margin-bottom: 24px; text-align: center;">Регистрация</h2>
+        <div class="auth-form-group">
+          <label for="registerName">Имя</label>
+          <input type="text" id="registerName" name="name" required>
+        </div>
+        <div class="auth-form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" name="email" required autocomplete="username">
+        </div>
+        <div class="auth-form-group">
+          <label for="registerPassword">Пароль</label>
+          <input type="password" id="registerPassword" name="password" required autocomplete="new-password">
+        </div>
+        <div class="auth-form-group">
+          <label for="registerPhone">Телефон (опционально)</label>
+          <input type="tel" id="registerPhone" name="phone">
+        </div>
+        <button type="submit" class="btn btn--primary">Зарегистрироваться</button>
+      </form>
+
+      <div class="auth-switch">
+        <span id="switchText">
+          Нет аккаунта? <a href="#" id="showRegister">Зарегистрироваться</a>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const showRegister = document.getElementById('showRegister');
+    const switchText = document.getElementById('switchText');
+
+    function updateSwitchToLogin() {
+      switchText.innerHTML = 'Уже есть аккаунт? <a href="#" id="showLogin">Войти</a>';
+      document.getElementById('showLogin').addEventListener('click', showLoginForm);
+    }
+
+    function showLoginForm(e) {
+      e.preventDefault();
+      registerForm.classList.remove('active');
+      loginForm.classList.add('active');
+      switchText.innerHTML = 'Нет аккаунта? <a href="#" id="showRegister">Зарегистрироваться</a>';
+      document.getElementById('showRegister').addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.classList.remove('active');
+        registerForm.classList.add('active');
+        updateSwitchToLogin();
+      });
+    }
+
+    showRegister.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginForm.classList.remove('active');
+      registerForm.classList.add('active');
+      updateSwitchToLogin();
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Вход — отправка на сервер (заглушка)');
+    });
+
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Регистрация — отправка на сервер (заглушка)');
+    });
+  </script>
+</body>
+</html>

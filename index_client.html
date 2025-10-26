@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сервис СОФТ</title>
+    <link rel="stylesheet" href="style_client.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Сайдбар -->
+    <aside class="sidebar">
+      <div class="sidebar__header">Сервис СОФТ</div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-item sidebar__nav-item--active">
+          <span class="sidebar__nav-text">Мои заявки</span>
+        </div>
+        <div class="sidebar__nav-item">
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_client_about.html">О нас</a></span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Основное содержимое -->
+    <main class="main-content">
+      <!-- Шапка -->
+      <header class="header">
+        <div class="header__menu">
+            <button class="header__menu-toggle"><img src="images/burger-button.svg" alt="" class="align-left"></button>
+            <div class="header__welcome">Добро пожаловать! <span>User</span></div>
+        </div>
+        <div class="header__user">
+            <div class="header__notifications">
+                <img src="images/notification.svg" alt="" class="header__notification-icon">
+            </div>
+            <div class="header__user-main" id="userDropdownToggle">
+                <div class="header__avatar">
+                <img src="images/Profile.svg" alt="Профиль" class="header__avatar-icon">
+                </div>
+                <div class="header__username">User</div>
+                <span class="header__dropdown-icon">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </span>
+                <!-- Выпадающее меню -->
+                <div class="header__user-dropdown" id="userDropdown">
+                    <a href="#" class="header__dropdown-item">Настройки</a>
+                    <a href="#" class="header__dropdown-item header__dropdown-item--danger">Выход</a>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <!-- Основной контент страницы -->
+      <div class="page-content">
+        <h1 class="page-content__title">Заявки</h1>
+
+        <div class="page-content__body">
+            <!-- Фильтры -->
+            <div class="filters">
+                <div class="filters__search">
+                    <img src="images/search-normal.png" alt="" class="filters__search-icon">
+                    <input type="text" class="filters__search-input" placeholder="Search for ticket" />
+                </div>
+
+                <div class="filters__priority">
+                    <button class="filters__priority-btn">
+                    Выбрать заявки
+                        <span>                    
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="filters__priority-dropdown">
+                    <div class="filters__priority-option" data-priority="all">
+                        Все заявки
+                    </div>
+                    <div class="filters__priority-option" data-priority="new">
+                        На диагностике
+                    </div>
+                    <div class="filters__priority-option" data-priority="ongoing">
+                        Диагностика завершена
+                    </div>
+                    <div class="filters__priority-option" data-priority="resolved">
+                        Готов к выдаче
+                    </div>
+                    <div class="filters__priority-option" data-priority="resolved">
+                        Завершено
+                    </div>
+                    <div class="filters__priority-option" data-priority="resolved">
+                        Отменено
+                    </div>
+                    </div>
+                </div>
+
+                <!-- <div class="filters__time">
+                    На этой неделе
+                    <span>                    
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div> -->
+            </div>
+
+            <!-- Вкладки -->
+            <div class="tabs">
+            <div class="tabs__item tabs__item--active" data-tab="all">
+                Все заявки
+            </div>
+            <div class="tabs__item" data-tab="new">
+                На диагностике
+            </div>
+            <div class="tabs__item" data-tab="ongoing">
+                Диагностика завершена
+            </div>
+            <div class="tabs__item" data-tab="resolved">
+                Готов к выдаче
+            </div>
+            <div class="tabs__item" data-tab="resolved">
+                Завершено
+            </div>
+            <div class="tabs__item" data-tab="resolved">
+                Отменено
+            </div>
+            </div>
+
+            <div class="ticket-list">
+                <!-- 1. Заявка в процессе диагностики -->
+                <div class="ticket ticket--diagnosing">
+                    <div class="ticket__header">
+                    <span class="ticket__status-badge ticket__status-badge--diagnosing">На диагностике</span>
+                    <div class="ticket__meta">
+                        <div class="ticket__id">Заявка #2025-CS101</div>
+                        <div class="ticket__date">Создана: 10.01.2025</div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__content">
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Устройство</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Модель:</span>
+                        <span class="ticket__field-value">Samsung Galaxy S23 Ultra</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Серийный номер:</span>
+                        <span class="ticket__field-value">SM-G918B-****-7721</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Неисправность:</span>
+                        <span class="ticket__field-value">Экран не реагирует на касания в нижней части. Возможно, повреждён сенсорный шлейф или матрица.</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Стоимость и сроки</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Диагностика:</span>
+                        <span class="ticket__field-value">500 ₽ (оплачено)</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Срок диагностики:</span>
+                        <span class="ticket__field-value">до 12.01.2025</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Статус:</span>
+                        <span class="ticket__field-value">Устройство принято в работу. Диагностика в процессе.</span>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__actions">
+                    <button class="btn btn--outline">Связаться с менеджером</button>
+                    </div>
+                </div>
+
+                <!-- 2. После диагностики — ожидание решения -->
+                <div class="ticket ticket--awaiting-decision">
+                    <div class="ticket__header">
+                    <span class="ticket__status-badge ticket__status-badge--awaiting">Диагностика завершена</span>
+                    <div class="ticket__meta">
+                        <div class="ticket__id">Заявка #2025-CS102</div>
+                        <div class="ticket__date">Диагностика завершена: 11.01.2025</div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__content">
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Устройство</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Модель:</span>
+                        <span class="ticket__field-value">MacBook Air M2 2022</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Серийный номер:</span>
+                        <span class="ticket__field-value">C02ZP123Q05N</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Неисправность:</span>
+                        <span class="ticket__field-value">Не включается. Диагностика показала: неисправен блок питания на материнской плате. Требуется замена компонента.</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Стоимость и сроки</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Диагностика:</span>
+                        <span class="ticket__field-value">600 ₽ (оплачено)</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Ремонт:</span>
+                        <span class="ticket__field-value"><strong>4 200 ₽</strong></span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Итого к оплате:</span>
+                        <span class="ticket__field-value"><strong>4 200 ₽</strong></span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Срок ремонта:</span>
+                        <span class="ticket__field-value">до 2 рабочих дней после подтверждения</span>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__actions">
+                    <button class="btn btn--primary">Оплатить и начать ремонт</button>
+                    <button class="btn btn--secondary">Отказаться и забрать технику</button>
+                    </div>
+                </div>
+
+                <!-- 3. После ремонта — ожидание выдачи -->
+                <div class="ticket ticket--ready-for-pickup">
+                    <div class="ticket__header">
+                    <span class="ticket__status-badge ticket__status-badge--ready">Готов к выдаче</span>
+                    <div class="ticket__meta">
+                        <div class="ticket__id">Заявка #2025-CS103</div>
+                        <div class="ticket__date">Ремонт завершён: 13.01.2025</div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__content">
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Устройство</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Модель:</span>
+                        <span class="ticket__field-value">Xiaomi Redmi Note 13 Pro</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Серийный номер:</span>
+                        <span class="ticket__field-value">XM-9A3B-****-K22</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Выполнено:</span>
+                        <span class="ticket__field-value">Замена задней крышки и аккумулятора. Устройство протестировано — работает стабильно.</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Стоимость и выдача</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Диагностика:</span>
+                        <span class="ticket__field-value">300 ₽</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Ремонт:</span>
+                        <span class="ticket__field-value">2 100 ₽</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Итого:</span>
+                        <span class="ticket__field-value"><strong>2 400 ₽</strong> (оплачено)</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Адрес выдачи:</span>
+                        <span class="ticket__field-value">г. Санкт-Петербург, Невский пр., д. 45</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">График:</span>
+                        <span class="ticket__field-value">Пн–Сб, 10:00–21:00</span>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__actions">
+                    <button class="btn btn--primary">Забрать технику</button>
+                    <button class="btn btn--outline">Назначить доставку</button>
+                    </div>
+                </div>
+
+                <!-- 4. Завершено — ремонт выполнен -->
+                <div class="ticket ticket--completed">
+                    <div class="ticket__header">
+                    <span class="ticket__status-badge ticket__status-badge--completed">Завершено</span>
+                    <div class="ticket__meta">
+                        <div class="ticket__id">Заявка #2025-CS104</div>
+                        <div class="ticket__date">Выдано: 14.01.2025</div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__content">
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Устройство</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Модель:</span>
+                        <span class="ticket__field-value">Dell Inspiron 15 5515</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Серийный номер:</span>
+                        <span class="ticket__field-value">DELL-7H2K-****-M99</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Работы:</span>
+                        <span class="ticket__field-value">Замена термопасты, чистка от пыли, замена вентилятора охлаждения.</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Финансы</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Диагностика:</span>
+                        <span class="ticket__field-value">400 ₽</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Ремонт:</span>
+                        <span class="ticket__field-value">1 800 ₽</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Итого:</span>
+                        <span class="ticket__field-value"><strong>2 200 ₽</strong> (оплачено)</span>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__actions">
+                    <button class="btn btn--outline">Оставить отзыв</button>
+                    </div>
+                </div>
+
+                <!-- 5. Завершено — отказ от ремонта -->
+                <div class="ticket ticket--cancelled">
+                    <div class="ticket__header">
+                    <span class="ticket__status-badge ticket__status-badge--cancelled">Отменено</span>
+                    <div class="ticket__meta">
+                        <div class="ticket__id">Заявка #2025-CS105</div>
+                        <div class="ticket__date">Отказ: 11.01.2025</div>
+                    </div>
+                    </div>
+
+                    <div class="ticket__content">
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Устройство</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Модель:</span>
+                        <span class="ticket__field-value">iPad Air 4</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Серийный номер:</span>
+                        <span class="ticket__field-value">DLXH2ABCDEF3</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Неисправность:</span>
+                        <span class="ticket__field-value">Трещина на экране. Диагностика подтвердила необходимость замены дисплея.</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket__section">
+                        <h3 class="ticket__section-title">Финансы</h3>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Диагностика:</span>
+                        <span class="ticket__field-value"><strong>500 ₽</strong> (оплачено)</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Стоимость ремонта:</span>
+                        <span class="ticket__field-value">6 500 ₽</span>
+                        </div>
+                        <div class="ticket__field">
+                        <span class="ticket__field-label">Решение:</span>
+                        <span class="ticket__field-value">Клиент отказался от ремонта. Устройство возвращено.</span>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- Нет кнопок — заявка в архиве -->
+                </div>
+            </div>
+
+
+            <!-- Пагинация -->
+            <div class="pagination">
+            <button class="pagination__button pagination__button--disabled" id="prevBtn">Previous</button>
+            <button class="pagination__button pagination__button--active" data-page="1">1</button>
+            <button class="pagination__button" data-page="2">2</button>
+            <button class="pagination__button" id="nextBtn">Next</button>
+            </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="script_client.js"></script>
+
+</body>
+</html>

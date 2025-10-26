@@ -120,77 +120,65 @@
             </div>
             </div>
 
-            <!-- Список тикетов -->
             <div class="ticket-list">
-            <!-- Тикет 1 -->
-            <div class="ticket" data-priority="new" data-status="all">
-                <div class="ticket__header">
-                <div class="ticket__id">
-                    <span class="ticket__priority-dot ticket__priority-dot--new"></span>
-                    Ticket# 2023-CS123
-                </div>
-                <div class="ticket__date">Posted at 12:45 AM</div>
-                </div>
-                <div class="ticket__title">How to deposit money to my portal?</div>
-                <div class="ticket__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </div>
-                <div class="ticket__footer">
-                <div class="ticket__author">
-                    <span class="ticket__author-avatar">J</span>
-                    <span class="ticket__author-name">John Snow</span>
-                </div>
-                <a href="#" class="ticket__action">Open Ticket</a>
-                </div>
-            </div>
-
-            <!-- Тикет 2 -->
-            <div class="ticket" data-priority="high" data-status="ongoing">
-                <div class="ticket__header">
-                <div class="ticket__id">
-                    <span class="ticket__priority-dot ticket__priority-dot--high"></span>
-                    Ticket# 2023-CS123
-                    <span class="ticket__priority-label">High Priority</span>
-                </div>
-                <div class="ticket__date">Posted at 12:45 AM</div>
-                </div>
-                <div class="ticket__title">How to deposit money to my portal?</div>
-                <div class="ticket__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </div>
-                <div class="ticket__footer">
-                <div class="ticket__author">
-                    <span class="ticket__author-avatar">J</span>
-                    <span class="ticket__author-name">John Snow</span>
-                </div>
-                <a href="#" class="ticket__action">Open Ticket</a>
-                </div>
-            </div>
-
-            <!-- Тикет 3 -->
-            <div class="ticket" data-priority="resolved" data-status="resolved">
-                <div class="ticket__header">
-                <div class="ticket__id">
-                    <span class="ticket__priority-dot ticket__priority-dot--resolved"></span>
-                    Ticket# 2023-CS123
-                </div>
-                <div class="ticket__date">Posted at 12:45 AM</div>
-                </div>
-                <div class="ticket__title">How to deposit money to my portal?</div>
-                <div class="ticket__description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </div>
-                <div class="ticket__footer">
-                <div class="ticket__author">
-                    <span class="ticket__author-avatar">J</span>
-                    <span class="ticket__author-name">John Snow</span>
-                </div>
-                <a href="#" class="ticket__action">Open Ticket</a>
-                </div>
-            </div>
+            <table class="clients-table">
+                <thead>
+                <tr>
+                    <th>Клиент</th>
+                    <th>Группа</th>
+                    <th>Моб.телефон</th>
+                    <th>Телефон</th>
+                    <th>Адрес</th>
+                    <th>Контактное лицо</th>
+                    <th>E-mail</th>
+                    <th>Доп.информация</th>
+                    <th>Автор записи</th>
+                    <th>Изменил запись</th>
+                    <th>Дата и время записи</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td data-field="client">Иванов Иван Иванович</td>
+                    <td data-field="group">Клиенты</td>
+                    <td data-field="mobile">+7 XXX XXX-XX-XX</td>
+                    <td data-field="phone">(1) 1-11-111</td>
+                    <td data-field="address">n/a</td>
+                    <td data-field="contact">-</td>
+                    <td data-field="email">SSS@SSS.SS</td>
+                    <td data-field="info">-</td>
+                    <td data-field="author">Администратор</td>
+                    <td data-field="editor">Администратор</td>
+                    <td data-field="datetime">10.10.2012 23:00:06</td>
+                </tr>
+                <tr>
+                    <td data-field="client">Петров П.П.</td>
+                    <td data-field="group">Клиенты</td>
+                    <td data-field="mobile">-</td>
+                    <td data-field="phone">111-22-2333</td>
+                    <td data-field="address">г.Москва</td>
+                    <td data-field="contact">-</td>
+                    <td data-field="email">-</td>
+                    <td data-field="info">-</td>
+                    <td data-field="author">Администратор</td>
+                    <td data-field="editor">Администратор</td>
+                    <td data-field="datetime">28.04.2010 10:27:13</td>
+                </tr>
+                <tr>
+                    <td data-field="client">Сидоров</td>
+                    <td data-field="group">Клиенты</td>
+                    <td data-field="mobile">-</td>
+                    <td data-field="phone">-</td>
+                    <td data-field="address">-</td>
+                    <td data-field="contact">-</td>
+                    <td data-field="email">-</td>
+                    <td data-field="info">-</td>
+                    <td data-field="author">Администратор</td>
+                    <td data-field="editor">Администратор</td>
+                    <td data-field="datetime">10.09.2016 23:43:47</td>
+                </tr>
+                </tbody>
+            </table>
             </div>
 
             <!-- Пагинация -->
