@@ -412,18 +412,90 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // === 5. ИЗМЕНЕНИЕ ШИРИНЫ СТОЛБЦОВ ===
-  function initColumnResize() {
+//   function initColumnResize() {
+//     const table = document.querySelector('.clients-table');
+//     const headers = table.querySelectorAll('th');
+
+//     headers.forEach((header, index) => {
+//       // Удаляем старый хэндл, если есть (на случай повторного вызова)
+//       const oldHandle = header.querySelector('.resize-handle');
+//       if (oldHandle) oldHandle.remove();
+
+//       const resizeHandle = document.createElement('div');
+//       resizeHandle.className = 'resize-handle';
+//       resizeHandle.style.cssText = `
+//         position: absolute;
+//         right: 0;
+//         top: 0;
+//         bottom: 0;
+//         width: 6px;
+//         cursor: col-resize;
+//         background: transparent;
+//         z-index: 10;
+//       `;
+//       header.style.position = 'relative';
+//       header.appendChild(resizeHandle);
+
+//       let startX, startWidth;
+
+//       resizeHandle.addEventListener('mousedown', function(e) {
+//         // Предотвращаем выделение текста и конфликты с редактированием
+//         e.preventDefault();
+//         startX = e.clientX;
+//         startWidth = header.offsetWidth;
+
+//         const onMouseMove = (e) => {
+//           const delta = e.clientX - startX;
+//           const newWidth = Math.max(50, startWidth + delta); // мин. ширина 50px
+//           header.style.width = `${newWidth}px`;
+//           header.style.minWidth = `${newWidth}px`;
+
+//           // Применяем ширину ко всем ячейкам в этом столбце
+//           const cells = table.querySelectorAll(`tbody tr td:nth-child(${index + 1})`);
+//           cells.forEach(cell => {
+//             cell.style.width = `${newWidth}px`;
+//             cell.style.minWidth = `${newWidth}px`;
+//           });
+//         };
+
+//         const onMouseUp = () => {
+//           document.removeEventListener('mousemove', onMouseMove);
+//           document.removeEventListener('mouseup', onMouseUp);
+//         };
+
+//         document.addEventListener('mousemove', onMouseMove);
+//         document.addEventListener('mouseup', onMouseUp);
+//       });
+//     });
+//   }
+
+    function initColumnResize() {
     const table = document.querySelector('.clients-table');
-    const headers = table.querySelectorAll('th');
+    const headers = Array.from(table.querySelectorAll('th'));
 
+    // Устанавливаем начальную ширину для ВСЕХ столбцов (чтобы избежать "прыжков")
     headers.forEach((header, index) => {
-      // Удаляем старый хэндл, если есть (на случай повторного вызова)
-      const oldHandle = header.querySelector('.resize-handle');
-      if (oldHandle) oldHandle.remove();
+        if (!header.style.width) {
+        // Запоминаем естественную ширину при первой загрузке
+        const naturalWidth = header.offsetWidth;
+        header.style.width = `${naturalWidth}px`;
+        header.style.minWidth = `${naturalWidth}px`;
 
-      const resizeHandle = document.createElement('div');
-      resizeHandle.className = 'resize-handle';
-      resizeHandle.style.cssText = `
+        // Применяем к ячейкам
+        const cells = table.querySelectorAll(`tbody tr td:nth-child(${index + 1})`);
+        cells.forEach(cell => {
+            cell.style.width = `${naturalWidth}px`;
+            cell.style.minWidth = `${naturalWidth}px`;
+        });
+        }
+
+        // Удаляем старый хэндл
+        const oldHandle = header.querySelector('.resize-handle');
+        if (oldHandle) oldHandle.remove();
+
+        const resizeHandle = document.createElement('div');
+        resizeHandle.className = 'resize-handle';
+        resizeHandle.style.cssText = `
         position: absolute;
         right: 0;
         top: 0;
@@ -432,42 +504,48 @@ document.addEventListener('DOMContentLoaded', function () {
         cursor: col-resize;
         background: transparent;
         z-index: 10;
-      `;
-      header.style.position = 'relative';
-      header.appendChild(resizeHandle);
+        `;
+        header.style.position = 'relative';
+        header.appendChild(resizeHandle);
 
-      let startX, startWidth;
+        let startX, startWidth;
 
-      resizeHandle.addEventListener('mousedown', function(e) {
-        // Предотвращаем выделение текста и конфликты с редактированием
+        resizeHandle.addEventListener('mousedown', function(e) {
         e.preventDefault();
         startX = e.clientX;
-        startWidth = header.offsetWidth;
+        startWidth = parseFloat(header.style.width) || header.offsetWidth;
 
         const onMouseMove = (e) => {
-          const delta = e.clientX - startX;
-          const newWidth = Math.max(50, startWidth + delta); // мин. ширина 50px
-          header.style.width = `${newWidth}px`;
-          header.style.minWidth = `${newWidth}px`;
+            const delta = e.clientX - startX;
+            const newWidth = Math.max(50, startWidth + delta); // мин. 50px
 
-          // Применяем ширину ко всем ячейкам в этом столбце
-          const cells = table.querySelectorAll(`tbody tr td:nth-child(${index + 1})`);
-          cells.forEach(cell => {
+            // МЕНЯЕМ ТОЛЬКО ЭТОТ СТОЛБЕЦ
+            header.style.width = `${newWidth}px`;
+            header.style.minWidth = `${newWidth}px`;
+
+            const cells = table.querySelectorAll(`tbody tr td:nth-child(${headers.indexOf(header) + 1})`);
+            cells.forEach(cell => {
             cell.style.width = `${newWidth}px`;
             cell.style.minWidth = `${newWidth}px`;
-          });
+            });
+
+            // Обновляем min-width таблицы, чтобы появился скролл при расширении
+            const totalWidth = headers.reduce((sum, h) => {
+            return sum + (parseFloat(h.style.width) || h.offsetWidth);
+            }, 0);
+            table.style.minWidth = `${Math.max(1400, totalWidth)}px`;
         };
 
         const onMouseUp = () => {
-          document.removeEventListener('mousemove', onMouseMove);
-          document.removeEventListener('mouseup', onMouseUp);
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
         };
 
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
-      });
+        });
     });
-  }
+    }
 
   // === 6. ИЗМЕНЕНИЕ ВЫСОТЫ СТРОК ===
   function initRowResize() {
@@ -519,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // === 7. ЗАПУСК ИНИЦИАЛИЗАЦИИ ===
   initColumnResize();
-  initRowResize();
+//   initRowResize();
 
   // === 6. Вкладки и фильтры приоритета — НЕ нужны для таблицы клиентов ===
   // Их можно полностью удалить, так как таблица не использует статусы "new", "resolved" и т.д.

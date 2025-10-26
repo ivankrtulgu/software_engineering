@@ -22,7 +22,7 @@ body {
 
 /* Блок: sidebar */
 .sidebar {
-  width: 250px;
+  min-width: 250px;
   background-color: #fff;
   border-right: 1px solid #e9ecef;
   display: flex;
@@ -895,6 +895,7 @@ body {
   min-width: 1400px; /* минимальная ширина для горизонтального скролла */
   border-collapse: collapse;
   font-size: 14px;
+   /* table-layout: auto; */
   /* УБРАЛИ table-layout: fixed */
 }
 
@@ -922,8 +923,18 @@ body {
   /* Ширина будет определяться содержимым или ручной установкой */
 }
 
+.clients-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 .clients-table td {
   border-bottom: 1px solid #eee;
+  overflow: hidden;
+  /* overflow-wrap: break-word; */
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .clients-table tbody tr:hover {
