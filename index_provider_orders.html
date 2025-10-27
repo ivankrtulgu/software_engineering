@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сервис СОФТ</title>
+    <link rel="stylesheet" href="style_provider.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Сайдбар -->
+    <aside class="sidebar">
+      <div class="sidebar__header">Сервис СОФТ</div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-item">
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_provider.html">Клиенты</a></span>
+        </div>
+        <div class="sidebar__nav-item sidebar__nav-item--active">
+          <span class="sidebar__nav-text">Заявки</span>
+        </div>
+        <div class="sidebar__nav-item">
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_provider_masters.html">Мастера</a></span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Основное содержимое -->
+    <main class="main-content">
+      <!-- Шапка -->
+      <header class="header">
+        <div class="header__menu">
+            <button class="header__menu-toggle"><img src="images/burger-button.svg" alt="" class="align-left"></button>
+            <div class="header__welcome">Добро пожаловать! <span>Приемщик</span></div>
+        </div>
+        <div class="header__user">
+          <div class="header__notifications">
+            <img src="images/notification.svg" alt="" class="header__notification-icon">
+          </div>
+            <div class="header__user-main" id="userDropdownToggle">
+                <div class="header__avatar">
+                <img src="images/Profile.svg" alt="Профиль" class="header__avatar-icon">
+                </div>
+                <div class="header__username">Приемщик</div>
+                <span class="header__dropdown-icon">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </span>
+                <!-- Выпадающее меню -->
+                <div class="header__user-dropdown" id="userDropdown">
+                    <a href="#" class="header__dropdown-item">Настройки</a>
+                    <a href="#" class="header__dropdown-item header__dropdown-item--danger">Выход</a>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <!-- Основной контент страницы -->
+      <div class="page-content">
+        <h1 class="page-content__title">Заявки</h1>
+
+        <div class="page-content__body">
+            <!-- Фильтры -->
+            <div class="filters">
+                <div class="filters__search">
+                    <img src="images/search-normal.png" alt="" class="filters__search-icon">
+                    <input type="text" class="filters__search-input" placeholder="Search for ticket" />
+                </div>
+
+                <!-- <div class="filters__priority">
+                    <button class="filters__priority-btn">
+                    Выбрать заявки
+                        <span>                    
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="filters__priority-dropdown">
+                    <div class="filters__priority-option" data-priority="all">
+                        Все заявки
+                    </div>
+                    <div class="filters__priority-option" data-priority="new">
+                        Новые заявки
+                    </div>
+                    <div class="filters__priority-option" data-priority="ongoing">
+                        Заявки в обработке
+                    </div>
+                    <div class="filters__priority-option" data-priority="resolved">
+                        Выполненные заявки
+                    </div>
+                    </div>
+                </div> -->
+
+                <div class="filters__time">
+                    Статус заказа
+                    <span>                    
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+
+                <div class="filters__time">
+                    На этой неделе
+                    <span>                    
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+
+                <button class="filters__new-ticket">
+                    Новая заявка
+                </button>
+            </div>
+
+            <!-- Вкладки -->
+            <div class="tabs">
+            <div class="tabs__item tabs__item--active" data-tab="all">
+                Все заявки
+            </div>
+            <div class="tabs__item" data-tab="new">
+                Новые
+            </div>
+            <div class="tabs__item" data-tab="ongoing">
+                В процессе выполнения
+            </div>
+            <div class="tabs__item" data-tab="resolved">
+                Завершенные
+            </div>
+            </div>
+
+            <!-- Таблица -->
+            <div class="ticket-list">
+                <div class="table-container">
+                    <table class="clients-table">
+                    <thead>
+                        <tr>
+                        <!-- Основные данные заказа -->
+                        <th>Статус заказа</th>
+                        <th>Дата приема</th>
+                        <th>№ заказа</th>
+                        <!-- Информация о клиенте -->
+                        <th>Клиент</th>
+                        <th>Моб.телефон</th>
+                        <th>Телефон</th>
+                        <th>Адрес</th>
+                        <!-- Информация об устройстве -->
+                        <th>Тип устройства</th>
+                        <th>Производитель</th>
+                        <th>Модель</th>
+                        <th>Серийный номер</th>
+                        <!-- Проблема и ремонт -->
+                        <th>Неисправность со слов клиента</th>
+                        <th>Выявленная неисправность</th>
+                        <th>Тип ремонта</th>
+                        <th>Доп.информация</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Пример строки (можно заменить на данные из API) -->
+                        <tr>
+                        <td data-field="status">Готово</td>
+                        <td data-field="date_received">12.01.2025</td>
+                        <td data-field="order_number">2</td>
+                        <td data-field="client">Петров П.П.</td>
+                        <td data-field="mobile">+7 XXX XXX-XX-XX</td>
+                        <td data-field="phone">111-22-2333</td>
+                        <td data-field="address">г.Москва</td>
+                        <td data-field="device_type">Основное устройство</td>
+                        <td data-field="manufacturer">Производитель 0003</td>
+                        <td data-field="model">V 80</td>
+                        <td data-field="serial_number">4600000000002</td>
+                        <td data-field="client_issue">не заряжается, не включается</td>
+                        <td data-field="diagnosed_issue">пайка BGA разъема322</td>
+                        <td data-field="repair_type">Гарантийный</td>
+                        <td data-field="additional_info">Инфо</td>
+                        </tr>
+                        <tr>
+                        <td data-field="status">Ожидают з/ч</td>
+                        <td data-field="date_received">12.01.2025</td>
+                        <td data-field="order_number">3</td>
+                        <td data-field="client">Петров П.П.</td>
+                        <td data-field="mobile">-</td>
+                        <td data-field="phone">111-22-2333</td>
+                        <td data-field="address">г.Москва</td>
+                        <td data-field="device_type">Основное устройство</td>
+                        <td data-field="manufacturer">Производитель 0003</td>
+                        <td data-field="model">C 350</td>
+                        <td data-field="serial_number">234567</td>
+                        <td data-field="client_issue">не включается, самовыключение</td>
+                        <td data-field="diagnosed_issue">пайка BGA разъема322</td>
+                        <td data-field="repair_type">Гарантийный</td>
+                        <td data-field="additional_info">Инфо</td>
+                        </tr>
+                        <tr>
+                        <td data-field="status">В ремонте</td>
+                        <td data-field="date_received">12.01.2025</td>
+                        <td data-field="order_number">4</td>
+                        <td data-field="client">Иванов Иван Иванович</td>
+                        <td data-field="mobile">+7 XXX XXX-XX-XX</td>
+                        <td data-field="phone">(+) 1-11-111</td>
+                        <td data-field="address">n/a</td>
+                        <td data-field="device_type">Основное устройство</td>
+                        <td data-field="manufacturer">Производитель 0001</td>
+                        <td data-field="model">FP71G+</td>
+                        <td data-field="serial_number">4600000000046</td>
+                        <td data-field="client_issue">не работает громкая связь</td>
+                        <td data-field="diagnosed_issue">пайка BGA разъема322</td>
+                        <td data-field="repair_type">Платный</td>
+                        <td data-field="additional_info">Инфо</td>
+                        </tr>
+                        <tr>
+                        <td data-field="status">На согласовании</td>
+                        <td data-field="date_received">12.01.2025</td>
+                        <td data-field="order_number">5</td>
+                        <td data-field="client">Иванов Иван Иванович</td>
+                        <td data-field="mobile">+7 XXX XXX-XX-XX</td>
+                        <td data-field="phone">(+) 1-11-111</td>
+                        <td data-field="address">n/a</td>
+                        <td data-field="device_type">Основное устройство</td>
+                        <td data-field="manufacturer">Производитель 0003</td>
+                        <td data-field="model">C 650</td>
+                        <td data-field="serial_number">3456</td>
+                        <td data-field="client_issue">не заряжается</td>
+                        <td data-field="diagnosed_issue">пайка BGA разъема322</td>
+                        <td data-field="repair_type">Платный</td>
+                        <td data-field="additional_info">Инфо</td>
+                        </tr>
+                        <tr>
+                        <td data-field="status">В ремонте</td>
+                        <td data-field="date_received">12.01.2025</td>
+                        <td data-field="order_number">6</td>
+                        <td data-field="client">Сидоров</td>
+                        <td data-field="mobile">+7 XXX XXX-XX-XX</td>
+                        <td data-field="phone">(+) 1-11-111</td>
+                        <td data-field="address">n/a</td>
+                        <td data-field="device_type">Основное устройство</td>
+                        <td data-field="manufacturer">Производитель 0001</td>
+                        <td data-field="model">FP71G+</td>
+                        <td data-field="serial_number">4600000000107</td>
+                        <td data-field="client_issue">не работает громкая связь</td>
+                        <td data-field="diagnosed_issue">пайка BGA разъема322</td>
+                        <td data-field="repair_type">Платный</td>
+                        <td data-field="additional_info">Инфо</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="script_provider.js"></script>
+
+</body>
+</html>

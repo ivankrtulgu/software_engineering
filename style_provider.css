@@ -915,10 +915,12 @@ body {
 .clients-table th {
   position: sticky;
   top: 0;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
+  background-color: #e5e2fb;
+
   font-weight: 500;
   color: #333;
-  border-bottom: 2px solid #6c5ce7;
+  /* border-bottom: 2px solid #6c5ce7; */
   z-index: 10;
   /* Ширина будет определяться содержимым или ручной установкой */
 }
@@ -927,6 +929,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
+  background-color: #e5e2fb;
 }
 
 .clients-table td {

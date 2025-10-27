@@ -13,16 +13,13 @@
       <div class="sidebar__header">Сервис СОФТ</div>
       <nav class="sidebar__nav">
         <div class="sidebar__nav-item sidebar__nav-item--active">
-          <span class="sidebar__nav-text">Заказы</span>
-        </div>
-        <div class="sidebar__nav-item">
           <span class="sidebar__nav-text">Клиенты</span>
         </div>
-        <div class="sidebar__nav-item">
-          <span class="sidebar__nav-text">Детали</span>
+        <div class="sidebar__nav-item ">
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_provider_orders.html">Заявки</a></span>
         </div>
         <div class="sidebar__nav-item">
-          <span class="sidebar__nav-text">Отчеты</span>
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_provider_masters.html">Мастера</a></span>
         </div>
       </nav>
     </aside>
@@ -33,7 +30,7 @@
       <header class="header">
         <div class="header__menu">
             <button class="header__menu-toggle"><img src="images/burger-button.svg" alt="" class="align-left"></button>
-            <div class="header__welcome">Добро пожаловать! <span>User</span></div>
+            <div class="header__welcome">Добро пожаловать! <span>Приемщик</span></div>
         </div>
         <div class="header__user">
           <div class="header__notifications">
@@ -43,7 +40,7 @@
                 <div class="header__avatar">
                 <img src="images/Profile.svg" alt="Профиль" class="header__avatar-icon">
                 </div>
-                <div class="header__username">User</div>
+                <div class="header__username">Приемщик</div>
                 <span class="header__dropdown-icon">
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -60,7 +57,7 @@
 
       <!-- Основной контент страницы -->
       <div class="page-content">
-        <h1 class="page-content__title">Заявки</h1>
+        <h1 class="page-content__title">Клиенты</h1>
 
         <div class="page-content__body">
             <!-- Фильтры -->
@@ -70,9 +67,9 @@
                     <input type="text" class="filters__search-input" placeholder="Search for ticket" />
                 </div>
 
-                <div class="filters__priority">
+                <!-- <div class="filters__priority">
                     <button class="filters__priority-btn">
-                    Выбрать заявки
+                    Выбрать клиентов
                         <span>                    
                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -93,24 +90,24 @@
                         Выполненные заявки
                     </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="filters__time">
+                <!-- <div class="filters__time">
                     На этой неделе
                     <span>                    
                         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </span>
-                </div>
+                </div> -->
 
                 <button class="filters__new-ticket">
-                    Новая заявка
+                    Добавить клиента
                 </button>
             </div>
 
             <!-- Вкладки -->
-            <div class="tabs">
+            <!-- <div class="tabs">
             <div class="tabs__item tabs__item--active" data-tab="all">
                 Все заявки
             </div>
@@ -123,7 +120,7 @@
             <div class="tabs__item" data-tab="resolved">
                 Завершенные
             </div>
-            </div>
+            </div> -->
 
             <!-- Таблица -->
             <div class="ticket-list">
@@ -514,13 +511,7 @@
                 </div>
             </div>
 
-            <!-- Пагинация -->
-            <!-- <div class="pagination">
-            <button class="pagination__button pagination__button--disabled" id="prevBtn">Previous</button>
-            <button class="pagination__button pagination__button--active" data-page="1">1</button>
-            <button class="pagination__button" data-page="2">2</button>
-            <button class="pagination__button" id="nextBtn">Next</button>
-            </div> -->
+
         </div>
 
       </div>

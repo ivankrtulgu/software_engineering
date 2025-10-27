@@ -411,6 +411,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+    // Обработчики для вкладок
+    document.querySelectorAll('.tabs__item').forEach(tab => {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.tabs__item').forEach(t => t.classList.remove('tabs__item--active'));
+        this.classList.add('tabs__item--active');
+        currentTab = this.dataset.tab;
+        updateTicketVisibility();
+    });
+    });
+
   // === 6. Вкладки и фильтры приоритета — НЕ нужны для таблицы клиентов ===
   // Их можно полностью удалить, так как таблица не использует статусы "new", "resolved" и т.д.
 });
