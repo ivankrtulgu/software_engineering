@@ -1,0 +1,58 @@
+/* === Адаптив: пошаговое скрытие === */
+
+/* Шаг 1: Начинаем уменьшать текст (~900px) */
+@media (max-width: 900px) {
+  .header__welcome {
+    font-size: 0.9rem;
+  }
+  .header__username {
+    font-size: 0.875rem;
+  }
+}
+
+/* Шаг 2: Скрываем "Добро пожаловать!" (~768px) */
+@media (max-width: 768px) {
+  .header__welcome::before {
+    content: "Привет, ";
+  }
+  .header__welcome span {
+    display: inline;
+  }
+  .header__welcome {
+    font-size: 0.875rem;
+  }
+
+  .header__welcome {
+    font-size: 0;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+  .header__welcome span {
+    display: none;
+  }
+  .sidebar {
+      min-width: 150px;
+  }
+}
+
+/* Шаг 4: Скрываем стрелку и имя, оставляем только аватар (~500px) */
+@media (max-width: 550px) {
+
+  .header__username,
+  .header__dropdown-icon {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .header__user-main {
+    gap: 0;
+    padding: 4px; /* компенсация потери кликабельности */
+    min-width: 0;
+  }
+
+
+}
