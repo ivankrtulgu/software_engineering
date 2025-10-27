@@ -7,6 +7,168 @@
     <link rel="stylesheet" href="style_provider.css">
 </head>
 <body>
+<!-- Модальное окно: Создание заявки -->
+<div class="modal" id="createTicketModal" style="display: none;">
+  <div class="modal__overlay" id="ticketModalOverlay"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <h3>Создание новой заявки</h3>
+      <button class="modal__close" id="closeTicketModalBtn">&times;</button>
+    </div>
+    <form id="createTicketForm" class="modal__form">
+      <!-- Клиент — кнопка выбора -->
+      <div class="form-group">
+        <label>Клиент *</label>
+        <div class="select-from-table">
+          <input type="text" id="selectedClient" name="client" placeholder="Выберите клиента" readonly required />
+          <button type="button" style="padding-block: 11px;" class="btn btn--outline btn--small" id="openClientSelector">Выбрать из списка</button>
+        </div>
+      </div>
+
+      <!-- Мастер — кнопка выбора -->
+      <div class="form-group">
+        <label>Мастер</label>
+        <div class="select-from-table">
+          <input type="text" id="selectedMaster" name="master" placeholder="Выберите мастера" readonly />
+          <button type="button" style="padding-block: 11px;" class="btn btn--outline btn--small" id="openMasterSelector">Выбрать из списка</button>
+        </div>
+      </div>
+
+      <!-- Остальные поля (без изменений) -->
+      <div class="form-group">
+        <label>Статус заказа</label>
+        <select name="status">
+          <option value="Новая">Новая</option>
+          <option value="В ремонте">В ремонте</option>
+          <option value="Ожидают з/ч">Ожидают з/ч</option>
+          <option value="На согласовании">На согласовании</option>
+          <option value="Готово">Готово</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Дата приема</label>
+        <input type="date" name="date_received" />
+      </div>
+      <div class="form-group">
+        <label>Тип устройства *</label>
+        <input type="text" name="device_type" placeholder="Например: Телефон, Ноутбук" required />
+      </div>
+      <div class="form-group">
+        <label>Производитель *</label>
+        <input type="text" name="manufacturer" required />
+      </div>
+      <div class="form-group">
+        <label>Модель *</label>
+        <input type="text" name="model" required />
+      </div>
+      <div class="form-group">
+        <label>Серийный номер</label>
+        <input type="text" name="serial_number" />
+      </div>
+      <div class="form-group">
+        <label>Неисправность со слов клиента *</label>
+        <textarea name="client_issue" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Выявленная неисправность</label>
+        <textarea name="diagnosed_issue" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Тип ремонта</label>
+        <select name="repair_type">
+          <option value="Гарантийный">Гарантийный</option>
+          <option value="Платный">Платный</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Доп. информация</label>
+        <textarea name="additional_info" rows="2"></textarea>
+      </div>
+
+      <!-- Кнопки -->
+      <div class="modal__actions">
+        <button type="button" class="btn btn--outline" id="cancelTicketBtn">Отмена</button>
+        <button type="submit" class="btn btn--primary">Создать заявку</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Модальное окно: Выбор клиента -->
+<div class="modal" id="selectClientModal" style="display: none;">
+  <div class="modal__overlay" id="clientModalOverlay"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <h3>Выберите клиента</h3>
+      <button class="modal__close" id="closeClientModalBtn">&times;</button>
+    </div>
+    <div class="table-container" style="max-height: 60vh; overflow: auto;">
+      <table class="assign-tickets-table">
+        <thead>
+          <tr>
+            <th>Клиент</th>
+            <th>Телефон</th>
+            <th>Адрес</th>
+            <th>Действие</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-client-id="1" data-client-name="Иванов И.И.">
+            <td>Иванов И.И.</td>
+            <td>+7 XXX XXX-XX-XX</td>
+            <td>n/a</td>
+            <td><button class="btn btn--primary btn--small select-client-btn">Выбрать</button></td>
+          </tr>
+          <tr data-client-id="2" data-client-name="Петров П.П.">
+            <td>Петров П.П.</td>
+            <td>111-22-2333</td>
+            <td>г.Москва</td>
+            <td><button class="btn btn--primary btn--small select-client-btn">Выбрать</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно: Выбор мастера -->
+<div class="modal" id="selectMasterModal" style="display: none;">
+  <div class="modal__overlay" id="masterModalOverlay"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <h3>Выберите мастера</h3>
+      <button class="modal__close" id="closeMasterModalBtn">&times;</button>
+    </div>
+    <div class="table-container" style="max-height: 60vh; overflow: auto;">
+      <table class="assign-tickets-table">
+        <thead>
+          <tr>
+            <th>Имя</th>
+            <th>Специализация</th>
+            <th>Телефон</th>
+            <th>Статус</th>
+            <th>Активные заявки</th>
+            <th>Действие</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Пример строки мастера -->
+          <tr data-master-id="1" data-master-name="Алексей Петров">
+            <td>Алексей Петров</td>
+            <td>Телефоны</td>
+            <td>+7 (999) 123-45-67</td>
+            <td>Свободен</td>
+            <td>0</td>
+            <td><button class="btn btn--primary btn--small select-master-btn">Выбрать</button></td>
+          </tr>
+          <!-- Добавьте другие строки по мере необходимости -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
   <div class="layout">
     <!-- Сайдбар -->
     <aside class="sidebar">

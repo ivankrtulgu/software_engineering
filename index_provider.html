@@ -7,6 +7,70 @@
     <link rel="stylesheet" href="style_provider.css">
 </head>
 <body>
+    <div class="modal" id="createClientModal" style="display: none;">
+        <div class="modal__overlay" id="modalOverlay"></div>
+            <div class="modal__content">
+            <div class="modal__header">
+            <h3>Создание нового клиента</h3>
+            <button class="modal__close" id="closeModalBtn">&times;</button>
+            </div>
+            <form id="createClientForm" class="modal__form">
+            <div class="form-group">
+                <label>Клиент *</label>
+                <input type="text" name="client" required />
+            </div>
+            <div class="form-group">
+                <label>Группа</label>
+                <select name="group">
+                <option value="Клиенты">Клиенты</option>
+                <option value="Партнёры">Партнёры</option>
+                <option value="Поставщики">Поставщики</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Моб. телефон</label>
+                <input type="tel" name="mobile" />
+            </div>
+            <div class="form-group">
+                <label>Телефон</label>
+                <input type="tel" name="phone" />
+            </div>
+            <div class="form-group">
+                <label>Адрес</label>
+                <textarea name="address" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Контактное лицо</label>
+                <input type="text" name="contact" />
+            </div>
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" name="email" />
+            </div>
+            <div class="form-group">
+                <label>Доп. информация</label>
+                <textarea name="info" rows="2"></textarea>
+            </div>
+
+            <!-- Флаги -->
+            <div class="form-group form-group--flags">
+                <label class="checkbox-label">
+                <input type="checkbox" name="allow_cabinet" />
+                Разрешить доступ к личному кабинету
+                </label>
+                <label class="checkbox-label">
+                <input type="checkbox" name="is_active" checked />
+                Активен
+                </label>
+            </div>
+
+            <div class="modal__actions">
+                <button type="button" class="btn btn--outline" id="cancelClientBtn">Отмена</button>
+                <button type="submit" class="btn btn--primary">Создать клиента</button>
+            </div>
+            </form>
+        </div>
+    </div>
   <div class="layout">
     <!-- Сайдбар -->
     <aside class="sidebar">
@@ -101,7 +165,7 @@
                     </span>
                 </div> -->
 
-                <button class="filters__new-ticket">
+                <button class="filters__new-client filters__new-ticket">
                     Добавить клиента
                 </button>
             </div>

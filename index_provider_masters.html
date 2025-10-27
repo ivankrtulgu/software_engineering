@@ -7,6 +7,108 @@
     <link rel="stylesheet" href="style_provider.css">
 </head>
 <body>
+<div class="modal" id="createMasterModal" style="display: none;">
+  <div class="modal__overlay" id="masterModalOverlay"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <h3>Добавить нового мастера</h3>
+      <button class="modal__close" id="closeMasterModalBtn">&times;</button>
+    </div>
+    <form id="createMasterForm" class="modal__form">
+      <div class="form-group">
+        <label>Имя *</label>
+        <input type="text" name="name" required />
+      </div>
+      <div class="form-group">
+        <label>Специализация *</label>
+        <input type="text" name="specialization" placeholder="Например: Телефоны, Ноутбуки" required />
+      </div>
+      <div class="form-group">
+        <label>Телефон</label>
+        <input type="tel" name="phone" />
+      </div>
+      <div class="form-group">
+        <label>Статус</label>
+        <select name="status">
+          <option value="Свободен">Свободен</option>
+          <option value="Занят">Занят</option>
+          <option value="В отпуске">В отпуске</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Активные заявки</label>
+        <input type="number" name="active_tickets" min="0" value="0" />
+      </div>
+
+      <!-- Кнопки действий -->
+      <div class="modal__actions">
+        <button type="button" class="btn btn--outline" id="cancelMasterBtn">Отмена</button>
+        <button type="submit" class="btn btn--primary">Добавить мастера</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Модальное окно: Выбор заявки для назначения -->
+<div class="modal" id="assignTicketModal" style="display: none;">
+  <div class="modal__overlay" id="assignModalOverlay"></div>
+  <div class="modal__content">
+    <div class="modal__header">
+      <h3>Выберите заявку для назначения</h3>
+      <button class="modal__close" id="closeAssignModalBtn">&times;</button>
+    </div>
+    <div class="table-container" style="max-height: 60vh; overflow: auto;">
+      <table class="assign-tickets-table">
+        <thead>
+          <tr>
+            <th>Статус</th>
+            <th>Дата</th>
+            <th>№</th>
+            <th>Клиент</th>
+            <th>Телефон</th>
+            <th>Устройство</th>
+            <th>Неисправность</th>
+            <th>Действие</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Примеры заявок (в реальности — из API или таблицы заказов) -->
+          <tr data-ticket-id="2">
+            <td>Готово</td>
+            <td>12.01.2025</td>
+            <td>2</td>
+            <td>Петров П.П.</td>
+            <td>+7 XXX XXX-XX-XX</td>
+            <td>V 80</td>
+            <td>не заряжается, не включается</td>
+            <td><button class="btn btn--primary btn--small attach-ticket-btn">Прикрепить</button></td>
+          </tr>
+          <tr data-ticket-id="3">
+            <td>Ожидают з/ч</td>
+            <td>12.01.2025</td>
+            <td>3</td>
+            <td>Сидоров А.А.</td>
+            <td>111-22-2333</td>
+            <td>C 350</td>
+            <td>не включается, самовыключение</td>
+            <td><button class="btn btn--primary btn--small attach-ticket-btn">Прикрепить</button></td>
+          </tr>
+          <tr data-ticket-id="5">
+            <td>На согласовании</td>
+            <td>12.01.2025</td>
+            <td>5</td>
+            <td>Иванов И.И.</td>
+            <td>+7 XXX XXX-XX-XX</td>
+            <td>C 650</td>
+            <td>не заряжается</td>
+            <td><button class="btn btn--primary btn--small attach-ticket-btn">Прикрепить</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
   <div class="layout">
     <!-- Сайдбар -->
     <aside class="sidebar">
@@ -86,7 +188,7 @@
                     </span>
                 </div>
 
-                <button class="filters__new-ticket">
+                <button class="filters__new-master filters__new-ticket">
                     Добавить мастера
                 </button>
             </div>
