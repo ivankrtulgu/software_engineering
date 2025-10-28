@@ -1,0 +1,115 @@
+.ticket__parts-table-container {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.ticket__parts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.ticket__parts-table th,
+.ticket__parts-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.ticket__parts-table th {
+  background-color: #f9f9f9;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+}
+
+.quantity-control__btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+}
+
+.quantity-control__input {
+  width: 40px;
+  text-align: center;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn--icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn--icon:hover {
+  background-color: #ffebee;
+}
+
+/* Кнопка "Добавить запчасть" — выровнена по правому краю заголовка */
+.ticket__section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* Стили для редактируемых полей внутри карточки */
+.ticket__field-input,
+.ticket__field-textarea,
+.ticket__field-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #212529;
+  background-color: #fff;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.ticket__field-input:focus,
+.ticket__field-textarea:focus,
+.ticket__field-select:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+}
+
+.ticket__field-textarea {
+  min-height: 60px;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+/* Стили для части "запчасти" */
+.ticket__parts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

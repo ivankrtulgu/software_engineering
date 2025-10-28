@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сервис СОФТ</title>
+    <link rel="stylesheet" href="style_client.css">
+    <link rel="stylesheet" href="style_master.css">
+    <link rel="stylesheet" href="style_header.css">
+    <link rel="stylesheet" href="style_provider.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Сайдбар -->
+    <aside class="sidebar">
+      <div class="sidebar__header">Сервис СОФТ</div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-item ">
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_master.html">Заявки клиентов</a></span>
+        </div>
+        <div class="sidebar__nav-item sidebar__nav-item--active">
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_master_repair_parts.html">Запчасти</a></span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Основное содержимое -->
+    <main class="main-content">
+      <!-- Шапка -->
+      <header class="header">
+        <div class="header__menu">
+            <button class="header__menu-toggle"><img src="images/burger-button.svg" alt="" class="align-left"></button>
+            <div class="header__welcome">Добро пожаловать! <span>Master</span></div>
+        </div>
+        <div class="header__user">
+            <div class="header__notifications">
+                <img src="images/notification.svg" alt="" class="header__notification-icon">
+            </div>
+            <div class="header__user-main" id="userDropdownToggle">
+                <div class="header__avatar">
+                <img src="images/Profile.svg" alt="Профиль" class="header__avatar-icon">
+                </div>
+                <div class="header__username">Master</div>
+                <span class="header__dropdown-icon">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </span>
+                <!-- Выпадающее меню -->
+                <div class="header__user-dropdown" id="userDropdown">
+                    <a href="#" class="header__dropdown-item">Настройки</a>
+                    <a href="#" class="header__dropdown-item header__dropdown-item--danger">Выход</a>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <!-- Основной контент страницы -->
+      <div class="page-content">
+        <h1 class="page-content__title">Запчасти</h1>
+
+        <div class="page-content__body">
+            <!-- Фильтры -->
+            <div class="filters">
+                <div class="filters__search">
+                    <img src="images/search-normal.png" alt="" class="filters__search-icon">
+                    <input type="text" class="filters__search-input" placeholder="Search for ticket" />
+                </div>
+
+                <div class="filters__priority">
+                    <button class="filters__priority-btn">
+                    Выбрать заявки
+                        <span>                    
+                            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="filters__priority-dropdown">
+                    <div class="filters__priority-option" data-priority="all">
+                        Все заявки
+                    </div>
+                    <div class="filters__priority-option" data-priority="new">
+                        На диагностике
+                    </div>
+                    <div class="filters__priority-option" data-priority="ongoing">
+                        Диагностика завершена
+                    </div>
+                    <div class="filters__priority-option" data-priority="resolved">
+                        Готов к выдаче
+                    </div>
+                    <div class="filters__priority-option" data-priority="resolved">
+                        Завершено
+                    </div>
+                    <div class="filters__priority-option" data-priority="resolved">
+                        Отменено
+                    </div>
+                    </div>
+                </div>
+
+                <!-- <div class="filters__time">
+                    На этой неделе
+                    <span>                    
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div> -->
+            </div>
+
+            <!-- Вкладки -->
+            <!-- <div class="tabs">
+            <div class="tabs__item tabs__item--active" data-tab="all">
+                Все заявки
+            </div>
+            <div class="tabs__item" data-tab="new">
+                На диагностике
+            </div>
+            <div class="tabs__item" data-tab="ongoing">
+                Диагностика завершена
+            </div>
+            <div class="tabs__item" data-tab="resolved">
+                Готов к выдаче
+            </div>
+            <div class="tabs__item" data-tab="resolved">
+                Завершено
+            </div>
+            <div class="tabs__item" data-tab="resolved">
+                Отменено
+            </div>
+            </div> -->
+
+            <div class="ticket-list">
+                <div class="table-container">
+                  <table class="clients-table" style="width: 100%; table-layout: fixed;">
+                    <thead>
+                      <tr>
+                        <th>ID запчасти</th>
+                        <th>Наименование</th>
+                        <th>Артикул (SKU)</th>
+                        <th>Цена за ед.</th>
+                        <th>Остаток на складе</th>
+                        <th>Место хранения</th>
+                        <th>Мин. остаток</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Примеры строк -->
+                      <tr>
+                        <td data-field="part_id">101</td>
+                        <td data-field="name">Разъём зарядки USB-C</td>
+                        <td data-field="sku">USB-C-350-BGA</td>
+                        <td data-field="price">1 200.00 ₽</td>
+                        <td data-field="quantity">5</td>
+                        <td data-field="location">Полка A3, ящик 2</td>
+                        <td data-field="min_stock_level">3</td>
+                      </tr>
+                      <tr>
+                        <td data-field="part_id">102</td>
+                        <td data-field="name">Микросхема аудиокодека</td>
+                        <td data-field="sku">AC97-FP71G-IC</td>
+                        <td data-field="price">850.00 ₽</td>
+                        <td data-field="quantity">2</td>
+                        <td data-field="location">Полка B1, ящик 5</td>
+                        <td data-field="min_stock_level">5</td>
+                      </tr>
+                      <tr>
+                        <td data-field="part_id">103</td>
+                        <td data-field="name">Динамик (громкая связь)</td>
+                        <td data-field="sku">SPK-FP71G-HF</td>
+                        <td data-field="price">600.00 ₽</td>
+                        <td data-field="quantity">0</td>
+                        <td data-field="location">Полка C2, ящик 1</td>
+                        <td data-field="min_stock_level">4</td>
+                      </tr>
+                      <tr>
+                        <td data-field="part_id">104</td>
+                        <td data-field="name">Аккумулятор Li-Po 3000 мАч</td>
+                        <td data-field="sku">BAT-LP3000-V80</td>
+                        <td data-field="price">2 100.00 ₽</td>
+                        <td data-field="quantity">12</td>
+                        <td data-field="location">Шкаф Б, секция 4</td>
+                        <td data-field="min_stock_level">6</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+            <!-- Пагинация -->
+            <!-- <div class="pagination">
+            <button class="pagination__button pagination__button--disabled" id="prevBtn">Previous</button>
+            <button class="pagination__button pagination__button--active" data-page="1">1</button>
+            <button class="pagination__button" data-page="2">2</button>
+            <button class="pagination__button" id="nextBtn">Next</button>
+            </div> -->
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="script_client.js"></script>
+  <script src="script_provider.js"></script>
+
+</body>
+</html>

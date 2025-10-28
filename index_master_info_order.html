@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сервис СОФТ</title>
+    <link rel="stylesheet" href="style_client.css">
+    <link rel="stylesheet" href="style_master.css">
+    <link rel="stylesheet" href="style_header.css">
+
+</head>
+<body>
+  <div class="layout">
+    <!-- Сайдбар -->
+    <aside class="sidebar">
+      <div class="sidebar__header">Сервис СОФТ</div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__nav-item sidebar__nav-item--active">
+          <span class="sidebar__nav-text">Заявки клиентов</span>
+        </div>
+        <div class="sidebar__nav-item">
+          <span class="sidebar__nav-text"><a style='text-decoration: none;' href="./index_master_repair_parts.html">Запчасти</a></span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Основное содержимое -->
+    <main class="main-content">
+      <!-- Шапка -->
+      <header class="header">
+        <div class="header__menu">
+            <button class="header__menu-toggle"><img src="images/burger-button.svg" alt="" class="align-left"></button>
+            <div class="header__welcome">Добро пожаловать! <span>Master</span></div>
+        </div>
+        <div class="header__user">
+            <div class="header__notifications">
+                <img src="images/notification.svg" alt="" class="header__notification-icon">
+            </div>
+            <div class="header__user-main" id="userDropdownToggle">
+                <div class="header__avatar">
+                <img src="images/Profile.svg" alt="Профиль" class="header__avatar-icon">
+                </div>
+                <div class="header__username">Master</div>
+                <span class="header__dropdown-icon">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </span>
+                <!-- Выпадающее меню -->
+                <div class="header__user-dropdown" id="userDropdown">
+                    <a href="#" class="header__dropdown-item">Настройки</a>
+                    <a href="#" class="header__dropdown-item header__dropdown-item--danger">Выход</a>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <!-- Основной контент страницы -->
+      <div class="page-content">
+        <h1 class="page-content__title">Заявки</h1>
+
+        <div class="page-content__body">
+            <div class="ticket ticket--editing ticket--master-view">
+              <div class="ticket__header">
+                <div class="ticket__meta">
+                  <div class="ticket__id">Заявка #2025-CS101</div>
+                  <div class="ticket__date">Создана: 10.01.2025</div>
+                </div>
+              </div>
+          
+              <div class="ticket__content">
+                <!-- Устройство -->
+                <div class="ticket__section">
+                  <h3 class="ticket__section-title">Устройство</h3>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Модель:</label>
+                    <input type="text" class="ticket__field-input" value="Samsung Galaxy S23 Ultra" disabled />
+                  </div>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Серийный номер:</label>
+                    <input type="text" class="ticket__field-input" value="SM-G918B-****-7721" disabled />
+                  </div>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Поломка (со слов клиента):</label>
+                    <textarea class="ticket__field-textarea">Экран не реагирует на касания в нижней части.</textarea>
+                  </div>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Выявленная неисправность (диагностика):</label>
+                    <textarea class="ticket__field-textarea">Повреждён сенсорный шлейф. Требуется замена.</textarea>
+                  </div>
+                </div>
+          
+                <!-- Статус и стоимость -->
+                <div class="ticket__section">
+                  <h3 class="ticket__section-title">Статус и стоимость</h3>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Статус заявки:</label>
+                    <select class="ticket__field-select">
+                      <option value="diagnosing">На диагностике</option>
+                      <option value="awaiting_approval" selected>Ожидает подтверждения</option>
+                      <option value="in_repair">В ремонте</option>
+                      <option value="ready">Готов к выдаче</option>
+                      <option value="completed">Завершено</option>
+                      <option value="cancelled">Отменено</option>
+                    </select>
+                  </div>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Стоимость диагностики (₽):</label>
+                    <input type="number" class="ticket__field-input" value="500.00" step="0.01" min="0" />
+                  </div>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Стоимость ремонта (₽):</label>
+                    <input type="number" class="ticket__field-input" value="3200.00" step="0.01" min="0" />
+                  </div>
+                  <div class="ticket__field">
+                    <label class="ticket__field-label">Срок выполнения:</label>
+                    <input type="text" class="ticket__field-input" placeholder="Напр.: до 15.01.2025" value="до 15.01.2025" />
+                  </div>
+                </div>
+          
+                <!-- Используемые запчасти -->
+                <div class="ticket__section ticket__section--parts">
+                  <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <h3 class="ticket__section-title">Используемые запчасти</h3>
+                    <button type="button" class="btn btn--outline" style="padding: 6px 12px; font-size: 13px; min-height: auto;">
+                      + Добавить запчасть
+                    </button>
+                  </div>
+                  <div class="ticket__parts-list">
+                    <div class="ticket__part-item" style="display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #eee;">
+                      <div style="flex: 1; min-width: 200px;">
+                        <label class="ticket__field-label" style="display: block; font-size: 12px; color: #6c757d; margin-bottom: 4px;">Запчасть</label>
+                        <input type="text" class="ticket__field-input" value="Сенсорный шлейф S23 Ultra (арт. USB-C-350-BGA)" />
+                      </div>
+                      <div style="width: 80px;">
+                        <label class="ticket__field-label" style="display: block; font-size: 12px; color: #6c757d; margin-bottom: 4px;">Кол-во</label>
+                        <input type="number" class="ticket__field-input" value="1" min="1" style="width: 100%;" />
+                      </div>
+                      <button type="button" class="btn btn--secondary" style="padding: 4px 8px; font-size: 12px; min-height: auto; margin-top: 20px;">Удалить</button>
+                    </div>
+                    <div class="ticket__part-item" style="display: flex; align-items: center; gap: 12px;">
+                      <div style="flex: 1; min-width: 200px;">
+                        <label class="ticket__field-label" style="display: block; font-size: 12px; color: #6c757d; margin-bottom: 4px;">Запчасть</label>
+                        <input type="text" class="ticket__field-input" value="Матрица AMOLED 6.8&quot; (арт. AMOLED-S23U-68)" />
+                      </div>
+                      <div style="width: 80px;">
+                        <label class="ticket__field-label" style="display: block; font-size: 12px; color: #6c757d; margin-bottom: 4px;">Кол-во</label>
+                        <input type="number" class="ticket__field-input" value="1" min="1" style="width: 100%;" />
+                      </div>
+                      <button type="button" class="btn btn--secondary" style="padding: 4px 8px; font-size: 12px; min-height: auto; margin-top: 20px;">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- Кнопки действий -->
+              <div class="ticket__actions">
+                <button type="button" class="btn btn--outline"><a style='text-decoration: none;' href="./index_master.html">Отмена</a></button>
+                <button type="submit" class="btn btn--primary"><a style='text-decoration: none;' href="./index_master.html">Сохранить изменения</a></button>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="script_client.js"></script>
+
+</body>
+</html>
