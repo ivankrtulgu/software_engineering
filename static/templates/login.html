@@ -172,6 +172,7 @@
     </div>
   </div>
 
+  <script src="../js/api.js"></script>
   <script>
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
@@ -203,14 +204,85 @@
       updateSwitchToLogin();
     });
 
-    loginForm.addEventListener('submit', (e) => {
+    // Обработка входа
+    loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      alert('Вход — отправка на сервер (заглушка)');
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      try {
+        const result = await api.login(email, password);
+        
+        // Сохраняем информацию о пользователе
+        localStorage.setItem('user', JSON.stringify(result.user));
+        
+        // Перенаправляем в зависимости от роли
+        switch (result.user.role) {
+          case 'client':
+            window.location.href = 'index_client.html';
+            break;
+          case 'operator':
+          case 'admin':
+            window.location.href = 'index_provider.html';
+            break;
+          case 'master':
+            window.location.href = 'index_master.html';
+            break;
+          default:
+            window.location.href = 'index.html';
+        }
+      } catch (error) {
+        ErrorHandler.handle(error);
+      }
     });
 
-    registerForm.addEventListener('submit', (e) => {
+    // Обработка регистрации
+    registerForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      alert('Регистрация — отправка на сервер (заглушка)');
+      
+      const formData = new FormData(registerForm);
+      const userData = Object.fromEntries(formData.entries());
+      
+      try {
+        const result = await api.register(userData);
+        
+        // Автоматически входим после регистрации
+        await api.login(userData.email, userData.password);
+        
+        // Сохраняем информацию о пользователе
+        localStorage.setItem('user', JSON.stringify(result.user));
+        
+        // Перенаправляем
+        window.location.href = 'index_client.html';
+      } catch (error) {
+        ErrorHandler.handle(error);
+      }
+    });
+
+    // Проверяем, авторизован ли пользователь
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        // Пользователь уже авторизован, перенаправляем
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        if (user.role) {
+          switch (user.role) {
+            case 'client':
+              window.location.href = 'index_client.html';
+              break;
+            case 'operator':
+            case 'admin':
+              window.location.href = 'index_provider.html';
+              break;
+            case 'master':
+              window.location.href = 'index_master.html';
+              break;
+            default:
+              window.location.href = 'index.html';
+          }
+        }
+      }
     });
   </script>
 </body>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастер - Сервисный центр</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_provider.css">
+    <link rel="stylesheet" href="../css/style_master.css">
+</head>
+<body>
+    <div class="master-container">
+        <!-- Сайдбар -->
+        <div class="master-sidebar">
+            <div class="logo">
+                <h2 style="text-align: center; margin-bottom: 30px;">Мастер</h2>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="orders">Мои заказы</a></li>
+                    <li><a href="#" class="nav-link" data-section="parts">Запчасти</a></li>
+                    <li><a href="#" class="nav-link" data-section="profile">Профиль</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Основной контент -->
+        <div class="master-content">
+                <!-- Секция заказов -->
+                <section id="orders-section" class="section active">
+                    <div class="section-header">
+                        <h2>Мои заказы</h2>
+                        <button onclick="refreshOrders()" class="btn btn-primary">Обновить</button>
+                    </div>
+                    
+                    <div class="filters">
+                        <select id="statusFilter" onchange="filterOrders()">
+                            <option value="">Все статусы</option>
+                            <option value="assigned">Назначен</option>
+                            <option value="in_progress">В работе</option>
+                            <option value="waiting_parts">Ожидает запчасти</option>
+                            <option value="completed">Завершен</option>
+                        </select>
+                    </div>
+
+                    <div class="master-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Клиент</th>
+                                    <th>Устройство</th>
+                                    <th>Описание</th>
+                                    <th>Приоритет</th>
+                                    <th>Статус</th>
+                                    <th>Дата создания</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Данные загружаются через JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Секция запчастей -->
+                <section id="parts-section" class="section">
+                    <div class="section-header">
+                        <h2>Запчасти</h2>
+                        <button onclick="refreshParts()" class="btn btn-primary">Обновить</button>
+                    </div>
+
+                    <div class="master-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Название</th>
+                                    <th>Количество</th>
+                                    <th>Цена</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="partsTableBody">
+                                <!-- Данные загружаются через JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Секция профиля -->
+                <section id="profile-section" class="section">
+                    <div class="section-header">
+                        <h2>Мой профиль</h2>
+                    </div>
+                    
+                    <div class="profile-form">
+                        <div class="form-group">
+                            <label>Имя:</label>
+                            <input type="text" id="profileName" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="profileEmail" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Специализация:</label>
+                            <input type="text" id="profileSpecialization" readonly>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Модальное окно для работы с заказом -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h3>Работа с заказом</h3>
+            <form id="orderWorkForm" class="order-work-form">
+                <div class="form-group">
+                    <label>Статус:</label>
+                    <select id="orderStatus">
+                        <option value="in_progress">В работе</option>
+                        <option value="waiting_parts">Ожидает запчасти</option>
+                        <option value="completed">Завершен</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Комментарий:</label>
+                    <textarea id="orderComment" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Затраченное время (часы):</label>
+                    <input type="number" id="workHours" min="0" step="0.5">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-master btn-master-primary">Сохранить</button>
+                    <button type="button" class="btn-master btn-master-secondary" onclick="closeOrderModal()">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/script_master.js"></script>
+</body>
+</html>

@@ -300,12 +300,26 @@
 // });
 
 document.addEventListener('DOMContentLoaded', function () {
-  // === 1. Редактирование таблицы (оставляем) ===
+  // Проверяем авторизацию
+  const token = localStorage.getItem('access_token');
+  if (!token) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  // Загружаем данные при загрузке страницы
+  loadClients();
+  loadTickets();
+  loadMasters();
+
+  // === 1. Редактирование таблицы ===
   const table = document.querySelector('.clients-table tbody');
   if (table) {
     function makeEditable(cell) {
       const currentValue = cell.textContent.trim();
       const fieldName = cell.dataset.field;
+      const row = cell.closest('tr');
+      const clientId = row.dataset.clientId;
 
       let input;
       if (fieldName === 'info' || fieldName === 'address') {
@@ -331,12 +345,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
       input.focus();
 
-      const saveValue = () => {
+      const saveValue = async () => {
         const newValue = input.value.trim();
-        if (newValue !== currentValue) {
+        if (newValue !== currentValue && clientId) {
+          try {
+            const updateData = { [fieldName]: newValue };
+            await api.updateClient(clientId, updateData);
+            cell.textContent = newValue;
+            ErrorHandler.showNotification('Клиент обновлен', 'success');
+          } catch (error) {
+            ErrorHandler.handle(error);
+            cell.textContent = currentValue;
+          }
+        } else {
           cell.textContent = newValue;
-          console.log(`Поле "${fieldName}" обновлено: ${currentValue} → ${newValue}`);
-          // Здесь можно добавить отправку на сервер
         }
         cell.classList.remove('editing');
       };
@@ -354,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     table.addEventListener('dblclick', function (e) {
       const cell = e.target.closest('td');
-      if (cell && !cell.classList.contains('editing')) {
+      if (cell && !cell.classList.contains('editing') && cell.dataset.field) {
         makeEditable(cell);
       }
     });
@@ -387,14 +409,17 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // === 4. Кнопка "Новая заявка" — можно оставить как заглушку ===
-  // const newTicketBtn = document.querySelector('.filters__new-ticket');
-  // if (newTicketBtn) {
-  //   newTicketBtn.addEventListener('click', function () {
-  //     alert('Функция создания новой записи пока не реализована.');
-  //     // Позже можно добавить модальное окно или добавление строки в таблицу
-  //   });
-  // }
+  // === 4. Кнопка "Новая заявка" ===
+  const newTicketBtn = document.querySelector('.filters__new-ticket');
+  if (newTicketBtn) {
+    newTicketBtn.addEventListener('click', function () {
+      // Открываем модальное окно создания заявки
+      const modal = document.getElementById('createTicketModal');
+      if (modal) {
+        modal.style.display = 'block';
+      }
+    });
+  }
 
   // === 5. Поиск по таблице (опционально, но полезно) ===
   const searchInput = document.querySelector('.filters__search-input');
@@ -612,6 +637,131 @@ document.addEventListener('DOMContentLoaded', function () {
   // === 6. Вкладки и фильтры приоритета — НЕ нужны для таблицы клиентов ===
   // Их можно полностью удалить, так как таблица не использует статусы "new", "resolved" и т.д.
 });
+
+// Функции для загрузки данных с сервера
+async function loadClients() {
+  try {
+    const clients = await api.getClients();
+    renderClientsTable(clients);
+  } catch (error) {
+    ErrorHandler.handle(error);
+  }
+}
+
+async function loadTickets() {
+  try {
+    const tickets = await api.getTickets();
+    renderTicketsTable(tickets);
+  } catch (error) {
+    ErrorHandler.handle(error);
+  }
+}
+
+async function loadMasters() {
+  try {
+    const masters = await api.getMasters();
+    renderMastersTable(masters);
+  } catch (error) {
+    ErrorHandler.handle(error);
+  }
+}
+
+// Функции для отображения данных в таблицах
+function renderClientsTable(clients) {
+  const tbody = document.querySelector('.clients-table tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+  
+  clients.forEach(client => {
+    const row = document.createElement('tr');
+    row.dataset.clientId = client.id;
+    row.innerHTML = `
+      <td data-field="name">${client.name || '-'}</td>
+      <td data-field="group">${client.group || '-'}</td>
+      <td data-field="mobile_phone">${client.mobile_phone || '-'}</td>
+      <td data-field="phone">${client.phone || '-'}</td>
+      <td data-field="address">${client.address || '-'}</td>
+      <td data-field="contact_person">${client.contact_person || '-'}</td>
+      <td data-field="email">${client.email || '-'}</td>
+      <td data-field="additional_info">${client.additional_info || '-'}</td>
+      <td data-field="author">${client.created_by || '-'}</td>
+      <td data-field="editor">${client.updated_by || '-'}</td>
+      <td data-field="datetime">${DataUtils.formatDate(client.created_at)}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function renderTicketsTable(tickets) {
+  const tbody = document.querySelector('.tickets-table tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+  
+  tickets.forEach(ticket => {
+    const statusInfo = DataUtils.formatTicketStatus(ticket.status);
+    const priorityInfo = DataUtils.formatPriority(ticket.priority);
+    
+    const row = document.createElement('tr');
+    row.dataset.ticketId = ticket.id;
+    row.innerHTML = `
+      <td data-field="status">${statusInfo.text}</td>
+      <td data-field="date_received">${DataUtils.formatDate(ticket.created_at)}</td>
+      <td data-field="order_number">${ticket.id}</td>
+      <td data-field="client">${ticket.client ? ticket.client.name : '-'}</td>
+      <td data-field="mobile">${ticket.client ? ticket.client.mobile_phone : '-'}</td>
+      <td data-field="phone">${ticket.client ? ticket.client.phone : '-'}</td>
+      <td data-field="address">${ticket.client ? ticket.client.address : '-'}</td>
+      <td data-field="device_type">${ticket.device_type || '-'}</td>
+      <td data-field="manufacturer">${ticket.manufacturer || '-'}</td>
+      <td data-field="model">${ticket.model || '-'}</td>
+      <td data-field="serial_number">${ticket.serial_number || '-'}</td>
+      <td data-field="client_issue">${ticket.client_issue || '-'}</td>
+      <td data-field="diagnosed_issue">${ticket.diagnosed_issue || '-'}</td>
+      <td data-field="repair_type">${ticket.repair_type || '-'}</td>
+      <td data-field="additional_info">${ticket.additional_info || '-'}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function renderMastersTable(masters) {
+  const tbody = document.querySelector('.masters-table tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+  
+  masters.forEach(master => {
+    const row = document.createElement('tr');
+    row.dataset.masterId = master.id;
+    row.innerHTML = `
+      <td data-field="name">${master.name || '-'}</td>
+      <td data-field="specialization">${master.specialization || '-'}</td>
+      <td data-field="phone">${master.phone || '-'}</td>
+      <td data-field="status">${master.status || '-'}</td>
+      <td data-field="active_tickets">${master.active_tickets || 0}</td>
+      <td class="actions-cell">
+        <button class="btn btn--primary assign-ticket-btn" data-master-id="${master.id}">
+          Назначить заявку
+        </button>
+      </td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+// Функция для обновления данных (вызывается после изменений)
+function refreshData() {
+  const currentPage = window.location.pathname;
+  if (currentPage.includes('index_provider.html')) {
+    loadClients();
+  } else if (currentPage.includes('index_provider_orders.html')) {
+    loadTickets();
+  } else if (currentPage.includes('index_provider_masters.html')) {
+    loadMasters();
+  }
+}
 
 
 

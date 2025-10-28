@@ -1,4 +1,3 @@
-01.txt
-table.css
-table.html
-table.js
+.vscode/
+.venv/
+__pycache__/
