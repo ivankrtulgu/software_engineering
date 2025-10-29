@@ -1,1 +1,1 @@
-DataBase = "postgresql://postgres:123456@localhost/service_center"
+DATABASE_URL = "postgresql://postgres:123456@localhost/service_center"
