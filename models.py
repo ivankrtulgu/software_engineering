@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import Optional
 from sqlalchemy import create_engine, Column, Integer, String, Boolean, Text, Date, DateTime, ForeignKey, Numeric, func, text, event
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from sqlalchemy.sql import func
@@ -28,12 +29,12 @@ class User(Base, UserMixin):
         """Установка хэша пароля"""
         self.password_hash = generate_password_hash(password)
     
-    def check_password(self, password):
+    def check_password(self, password) -> bool:
         """Проверка пароля"""
         return check_password_hash(str(self.password_hash), password)
     
     @property
-    def role(self):
+    def role(self)->Optional[str]:
         if self.worker:
             return self.worker.role
         elif self.client:

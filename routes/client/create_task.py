@@ -3,9 +3,9 @@ from ..app import app, role_required
 from flask import render_template, request, redirect, flash
 from models import Task, Session
 
-@app.route("/client/create_task", methods=["GET", "POST"])
+@app.route("/client/create_task", methods=["GET", "POST"]) # type: ignore
 @role_required("client")
-def request_task():
+def client_create_task():
     if request.method == "GET":
         return render_template("client/create_task.html", user=current_user.to_dict())
     

@@ -1,21 +1,17 @@
 from flask_login import current_user
 from ..app import app,role_required
-from flask import render_template,request,redirect
-from sqlalchemy.orm import joinedload
-from old_model import *
+from flask import render_template
+from models import Task,Session
 
 
 @app.route("/client",methods = ["GET"])
-@role_required("client")
-def index():
-    requests = Request.query \
-        .join(Device)\
-        .filter(Device.client_id == current_user.get_id())\
-        .options(
-            joinedload(Request.device),
-            joinedload(Request.operator),
-            joinedload(Request.master)
-        ) \
-        .order_by(Request.created_at.desc())\
-        .all()
-    return render_template("client/index.html",requests = requests)
+#@role_required("client")
+def client():
+    session = Session()
+    tasks = map(lambda task:task.to_dict(),
+                session.query(Task) \
+                    .filter(Task.client_id == current_user.get_id()) \
+                    .order_by(Task.date) \
+                    .all()
+                    )
+    return render_template("сlient/index.html",tasks = tasks, user = current_user.client.to_dict())

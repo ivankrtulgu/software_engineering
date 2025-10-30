@@ -4,7 +4,7 @@
 # login
 Вход в систему
 
-# unlogin
+# logout
 Выход из системы
 
 # profile
