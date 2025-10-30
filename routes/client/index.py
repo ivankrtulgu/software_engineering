@@ -5,7 +5,7 @@ from models import Task,Session
 
 
 @app.route("/client",methods = ["GET"])
-#@role_required("client")
+@role_required("client")
 def client():
     session = Session()
     tasks = map(lambda task:task.to_dict(),
@@ -14,4 +14,6 @@ def client():
                     .order_by(Task.date) \
                     .all()
                     )
-    return render_template("сlient/index.html",tasks = tasks, user = current_user.client.to_dict())
+    user = current_user.client.to_dict()
+    session.close()
+    return render_template("сlient/index.html",tasks = tasks, user = user)
