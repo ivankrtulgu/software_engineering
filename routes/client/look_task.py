@@ -1,11 +1,11 @@
 from flask_login import current_user
-from ..app import app,role_required
+from ..app import app,login_required
 from flask import render_template,flash,redirect,url_for
 from models import Task,Session
 
 
 @app.route("/client/look_task/<int:id>", methods=["GET"])
-@role_required("client")
+@login_required
 def client_look_task(id):
     session = Session()
     try:

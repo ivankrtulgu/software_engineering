@@ -1,11 +1,11 @@
 from flask_login import current_user
-from ..app import app,role_required
+from ..app import app,login_required
 from flask import render_template
 from models import Task,Session
 
 
 @app.route("/client",methods = ["GET"])
-@role_required("client")
+@login_required
 def client():
     session = Session()
     tasks = map(lambda task:task.to_dict(),

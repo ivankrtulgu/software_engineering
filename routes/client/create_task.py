@@ -1,10 +1,10 @@
 from flask_login import current_user
-from ..app import app, role_required
+from ..app import app, login_required
 from flask import render_template, request, redirect, flash
 from models import Task, Session
 
 @app.route("/client/create_task", methods=["GET", "POST"]) # type: ignore
-@role_required("client")
+@login_required
 def client_create_task():
     if request.method == "GET":
         return render_template("client/create_task.html", user=current_user.to_dict())
