@@ -7,7 +7,7 @@ from models import Worker,User, Session
 @role_required("admin")
 def admin_create_worker():
     if request.method == "GET":
-        return render_template("admin/create_worker.html", user=current_user.to_dict(), roles = ["client","master","operator","boogalter","admin"])
+        return render_template("admin/create_worker.html", user=current_user.worker.to_dict(), roles = ["client","master","operator","boogalter","admin"])
     
     if request.method == "POST":
         session = Session()
@@ -42,6 +42,6 @@ def admin_create_worker():
         except Exception as e:  
             print(e)
             flash("Произошла ошибка, попробуйте еще раз.", "error")  
-            render_template("admin/create_worker.html", user=current_user.to_dict(), roles = ["client","master","operator","boogalter","admin"])
+            render_template("admin/create_worker.html", user=current_user.worker.to_dict(), roles = ["client","master","operator","boogalter","admin"])
         finally:
             session.close()
