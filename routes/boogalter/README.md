@@ -8,7 +8,7 @@
 
 # available_material
 просмотр товаров
-# create_purchase GET,POST "material[name,number,price]"
+# create_purchase GET,POST "material[(name,number,price), ...]"
 форма заказа
 # spent_materials GET,POST{id}
 просмотр потраченных товаров, возможность отмены их утраты

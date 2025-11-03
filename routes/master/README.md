@@ -13,6 +13,6 @@
                               POST select_task {id}  POST decline_task{id}
 
 
-# add_spent_materials_for_task/<task id>  
+# add_spent_materials_for_task/{task_id,materials = [(name,number), ... ]}
 Добавляет список потраченных материалов для заявки
 

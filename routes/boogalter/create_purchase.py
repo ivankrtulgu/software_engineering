@@ -8,10 +8,10 @@ app.route("/boogalter/create_purchase",methods = ["GET","POST"])
 @role_required("boogalter")
 def boogalter_create_purchase():
     if request.method == "POST":
-        purchase_materials = request.form.get("materials","{}")
+        purchase_materials = request.form.get("materials","()")
 
         boogalter_id = current_user.id
-        purchase_materials = [Purchase(boogalter_id = boogalter_id, name = material, number = number, price = price) for material,number,price in json.loads(purchase_materials).items()]
+        purchase_materials = [Purchase(boogalter_id = boogalter_id, name = material, number = number, price = price) for material,number,price in json.loads(purchase_materials)]
     
         session = Session()
         session.add_all(purchase_materials)
