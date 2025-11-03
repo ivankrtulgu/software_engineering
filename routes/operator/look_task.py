@@ -4,7 +4,7 @@ from flask import render_template,request,flash,redirect, session
 from models import Task,Session
 
 
-@app.route("/operator/look_task/<int:id") # type: ignore
+@app.route("/operator/look_task/<int:id>") # type: ignore
 @role_required("operator")
 def operator_look_task(id):
     session = Session()

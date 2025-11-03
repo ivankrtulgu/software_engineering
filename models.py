@@ -278,6 +278,19 @@ class AvailableMaterial(Base):
 def create_available_materials_view(engine):
     """Создать или заменить представление доступных материалов"""
     
+    # Сначала удаляем если существует
+    with engine.connect() as conn:
+        try:
+            conn.execute(text('DROP VIEW IF EXISTS available_materials_view CASCADE'))
+            conn.commit()
+        except:
+            conn.rollback()
+            try:
+                conn.execute(text('DROP TABLE IF EXISTS available_materials_view CASCADE'))
+                conn.commit()
+            except:
+                conn.rollback()
+    
     view_definition = """
     CREATE OR REPLACE VIEW available_materials_view AS
     SELECT 
@@ -307,7 +320,7 @@ def create_available_materials_view(engine):
         conn.execute(text(view_definition))
         conn.commit()
 
-def check_connect_db(debug=False):
+def db_check_connect(debug=False):
     try:
         with engine.connect() as conn:
             conn.execute(text("SELECT 1"))  
@@ -357,6 +370,24 @@ def create_admin(password, full_name="Admin", login="Admin"):
     finally:
         session.close()
 
+def db_clear():
+    """Быстрое пересоздание всей БД"""
+    try:
+        # Удаляем ВСЕ объекты каскадно
+        with engine.connect() as conn:
+            conn.execute(text('DROP SCHEMA public CASCADE'))
+            conn.execute(text('CREATE SCHEMA public'))
+            conn.commit()
+        
+        # Создаем все таблицы заново
+        Base.metadata.create_all(engine)
+        create_available_materials_view(engine)
+        print("✅ База данных пересоздана")
+        
+    except Exception as e:
+        print(f"❌ Ошибка: {e}")
+        raise e
+    
 
 @event.listens_for(Worker, 'before_insert')
 def auto_call_before_add_worker(mapper, connection, target):
