@@ -1,7 +1,7 @@
 from flask_login import current_user
 from ..app import app,role_required
 from flask import render_template,request,flash,redirect
-from models import Worker,User,Task,Session
+from models import Task,Session
 
 
 @app.route("/master",methods = ["GET"]) # type: ignore

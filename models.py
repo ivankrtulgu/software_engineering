@@ -177,7 +177,7 @@ class Task(Base):
     client_id = Column(Integer, ForeignKey('Clients.user_id'), nullable=False)
     master_id = Column(Integer, ForeignKey('Workers.user_id')) 
     date = Column(DateTime, default=func.now())
-    status = Column(String(50), default='На рассмотрении') #"На рассмотрении","Назначена мастеру", "В процессе выполнения","Выполнена"
+    status = Column(String(50), default='На рассмотрении') #"На рассмотрении","Назначена мастеру", "В процессе выполнения","Выполнена","Отклонена"
     pay = Column(Numeric(10, 2))
     description = Column(Text)
     
