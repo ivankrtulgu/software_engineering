@@ -11,7 +11,7 @@ def boogalter_create_purchase():
         purchase_materials = request.form.get("materials","{}")
 
         boogalter_id = current_user.id
-        purchase_materials = [Purchase(boogalter_id = boogalter_id, name = material, number = number) for material,number in json.loads(purchase_materials).items()]
+        purchase_materials = [Purchase(boogalter_id = boogalter_id, name = material, number = number, price = price) for material,number,price in json.loads(purchase_materials).items()]
     
         session = Session()
         session.add_all(purchase_materials)
