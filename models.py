@@ -110,7 +110,9 @@ class Worker(Base):
     def to_dict(self):
         return {
             'user_id': self.user_id,
-            'role': self.role
+            'role': self.role,
+            'login':self.login,
+            'full_name':self.full_name
         }
 
 
@@ -166,7 +168,10 @@ class Client(Base):
 
     def to_dict(self):
         return {
-            'user_id': self.user_id
+            'user_id': self.user_id,
+            'full_name':self.full_name,
+            'login': self.login,
+            'role' : 'client'
         }
 
 
@@ -188,11 +193,11 @@ class Task(Base):
     def to_dict(self):
         return {
             'id': self.id,
-            'client_id': self.client_id,
-            'master_id': self.master_id,
-            'date': self.date.isoformat() if self.date else None,
+            'client_name': self.client and self.client.full_name or None,
+            'master_name': self.master and self.master.full_name or None,
+            'date': self.date and self.date.strftime("%d.%m.%Y %H:%M") or None,
             'status': self.status,
-            'pay': float(self.pay) if self.pay else None,
+            'pay': self.pay and str(self.pay) or None,
             'description': self.description
         }
 
@@ -213,11 +218,11 @@ class SpentMaterial(Base):
     def to_dict(self):
         return {
             'id': self.id,
-            'master_id': self.master_id,
+            'master': self.master and self.master.full_name or None,
             'task_id': self.task_id,
             'name': self.name,
             'number': self.number,
-            'spent_date': self.spent_date.isoformat() if self.spent_date else None
+            'spent_date': self.spent_date and self.spent_date.strftime("%d.%m.%Y %H:%M") or None,
         }
 
 
@@ -237,12 +242,12 @@ class Purchase(Base):
     def to_dict(self):
         return {
             'id': self.id,
-            'boogalter_id': self.boogalter_id,
+            'boogalter': self.boogalter and self.boogalter.full_name or None,
             'name': self.name,
             'number': self.number,
             'is_done': self.is_done,
-            'date': self.date.isoformat() if self.date else None,
-            'price': float(self.price) if self.price else None
+            'date': self.date and self.date.strftime("%d.%m.%Y %H:%M") or None,
+            'price': self.price and str(self.price) or None
         }
 
 
