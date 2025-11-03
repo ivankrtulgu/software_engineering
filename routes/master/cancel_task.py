@@ -4,9 +4,9 @@ from flask import render_template,request,flash,redirect
 from models import Task,Session
 
 
-@app.route("/master/select_task",methods = ["POST"]) # type: ignore
+@app.route("/master/decline_task",methods = ["POST"]) # type: ignore
 @role_required("master")
-def master_select_task():
+def master_decline_task():
     if request.method == "POST":
         task_id = request.form.get("id",type=int)
 
@@ -19,13 +19,15 @@ def master_select_task():
 
         match(select_task, master_id,task_status):
             case None, _,_:
-                flash("Нельзя выбрать эту заявку т.к она отсутствует.","error")
+                flash("Нельзя отменить эту заявку т.к она отсутствует.","error")
 
-            case _, current_user.id, "Назначена мастеру":
-                flash("Заявка выбрана для выполнения.","success")
+            case _, current_user.id, "В процессе выполнения":
+                select_task.status = "Назначена мастеру"
+                session.commit()
+                flash("Заявка была отменена.","success")
+
             case _, current_user.id, _:
-                
-                flash(f"Нельзя взять заявку на выполнение т.к. она имеет статус: {task_status}.","error")
+                flash(f"Нельзя отменить эту заявку т.к. она имеет статус: {task_status}.","error")
 
             case _,_,_:
                 flash("Эта заявка вам не назначена.","error")
