@@ -9,3 +9,5 @@
 GET look_task<id>           |      POST decline_task{id}
                            при изменении вызывается POST change_master{task_id,master_id}
 
+# look_task<id>
+Просмотр задачи
