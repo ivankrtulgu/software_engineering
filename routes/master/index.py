@@ -4,7 +4,7 @@ from flask import render_template,request,flash,redirect
 from models import Worker,User,Task,Session
 
 
-@app.route("/master",methods = ["GET","POST"]) # type: ignore
+@app.route("/master",methods = ["GET"]) # type: ignore
 @role_required("master")
 def master():
     if request.method == "GET":
