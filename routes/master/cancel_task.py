@@ -6,7 +6,7 @@ from models import Task,Session
 
 @app.route("/master/decline_task",methods = ["POST"]) # type: ignore
 @role_required("master")
-def master_decline_task():
+def master_cancel_task():
     if request.method == "POST":
         task_id = request.form.get("id",type=int)
 
