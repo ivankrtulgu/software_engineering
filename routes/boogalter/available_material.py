@@ -11,4 +11,4 @@ def boogalter_available_material():
                               session.query(AvailableMaterial).all()
     )
     session.close()
-    render_template("/boogalter/available_material.html",available_materials = available_materials, user = current_user.to_dict())
+    return render_template("/boogalter/available_material.html",available_materials = available_materials, user = current_user.to_dict())
