@@ -3,11 +3,11 @@
 Можно выбрать мастера по логину для заявок на рассмотрении  и отклонить заявки на рассмотрении
  Внешний вид сайта:
  Фильтры
-    Заявка Дата  Статус  Мастер 
-    1                     login  Отклонить
-    |                       |        |
-GET look_task<id>           |      POST decline_task{id}
-                           при изменении вызывается POST change_master{task_id,master_id}
+    Заявка Дата  Статус  Мастер   Имя мастера  Кол-во тек-их заявок у данного мастера
+    1                     login       Вася           master["number_active_tasks"]                                   Отклонить
+    |                       |                                                              |
+GET look_task<id>           |                                                POST decline_task{id}
+                           при изменении вызывается POST change_master_for_task{task_id,master_id}
 
 # look_task<id>
 Просмотр задачи

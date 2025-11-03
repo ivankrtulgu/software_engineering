@@ -11,8 +11,16 @@ def operator():
     tasks = [ task.to_dict() 
              for task in session.query(Task).order_by(Task.date.desc()).all()
              ]
-    masters = [master.to_dict()
-               for master in session.query(Worker).join(User).order_by(User.full_name).all()]
+    
+    masters_db = session.query(Worker).join(User).order_by(User.full_name).all()
+    masters = []
+    for master in masters_db:
+        counter = 0
+        for task in master.assigned_tasks:
+            if task.status in  ["Назначена мастеру", "В процессе выполнения"]:
+                counter += 1
+
+        masters.append(master.to_dict()|{"number_active_tasks":counter})
     
     session.close()
     
