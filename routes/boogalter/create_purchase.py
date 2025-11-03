@@ -1,6 +1,6 @@
 from models import Purchase, Session
 from ..app import app,role_required
-from flask import render_template, request, session,flash
+from flask import render_template, request, session,flash,redirect
 from flask_login import current_user
 import json
 
@@ -18,5 +18,7 @@ def boogalter_create_purchase():
         session.commit()
         session.close()
         flash("Оформление закупки прошло успешно","success")
+        redirect("/boogalter/create_purchase")
 
-    return render_template("/boogalter/create_purchase.html", user = current_user.to_dict())
+    if request.method == "GET":
+        return render_template("/boogalter/create_purchase.html", user = current_user.to_dict())

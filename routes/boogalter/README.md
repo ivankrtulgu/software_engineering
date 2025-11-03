@@ -8,9 +8,9 @@
 
 # available_material
 просмотр товаров
-# create_purchase
+# create_purchase GET,POST "materials{name:number,name1:number2 ...}"
 форма заказа
-# spent_materials
+# spent_materials GET,POST{id}
 просмотр потраченных товаров, возможность отмены их утраты
 # done_purchase
 просмотр доставленных товаров
