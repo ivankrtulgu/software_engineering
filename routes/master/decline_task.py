@@ -15,7 +15,6 @@ def master_decline_task():
         select_task = session.query(Task).get(task_id)
         master_id = select_task and select_task.master_id or None
         task_status = select_task and select_task.status or None
-        session.close()
 
         match(select_task, master_id,task_status):
             case None, _,_:
@@ -36,4 +35,5 @@ def master_decline_task():
 
             case _,_,_:
                 flash("Эта заявка вам не назначена.","error")
+        session.close()
     return redirect("/master")

@@ -15,7 +15,7 @@ def operator_decline_task():
         select_task = session.query(Task).get(task_id)
         master_id = select_task and select_task.master_id or None
         task_status = select_task and select_task.status or None
-        session.close()
+        
 
         match(select_task,task_status):
             case None,_:
@@ -23,10 +23,13 @@ def operator_decline_task():
 
             case _, "На рассмотрении":
                 select_task.status = "Отклонена"
+                select_task.master_id = None
+                session.add(select_task)
                 session.commit()
                 flash("Заявка была отклонена.","success")
 
 
             case _, _:
                 flash(f"Нельзя отклонить эту заявку т.к. она имеет статус: {task_status}.","error")
+        session.close()
     return redirect("/operator")
