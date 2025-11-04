@@ -16,7 +16,9 @@ def index():
     return redirect("/auth/login")
 
 app.template_folder = Path(abspath(__file__)).parent.parent / "static" / "templates"
+app.static_folder = Path(abspath(__file__)).parent.parent / "static"
 print(app.template_folder)
+print(app.static_folder)
 app.secret_key = "secret"
 
 login_manager = LoginManager()
