@@ -7,6 +7,8 @@ from config import DATABASE_URL
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+import json
+
 Base = declarative_base()
 
 class User(Base, UserMixin):
@@ -388,6 +390,107 @@ def db_clear():
         print(f"❌ Ошибка: {e}")
         raise e
     
+
+def load_seed_from_json(filepath: str):
+    session = Session()
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        print("🌱 Загружаем пользователей...")
+        worker_map = {}
+        client_map = {}
+
+        # --- Workers ---
+        for w in data.get("workers", []):
+            worker = Worker(
+                full_name=w["full_name"],
+                login=w["login"],
+                password=w["password"],
+                role=w["role"]
+            )
+            session.add(worker)
+            session.flush()  # Получаем user_id
+            worker_map[w["login"]] = worker.user_id
+
+        # --- Clients ---
+        for c in data.get("clients", []):
+            client = Client(
+                full_name=c["full_name"],
+                login=c["login"],
+                password=c["password"]
+            )
+            session.add(client)
+            session.flush()
+            client_map[c["login"]] = client.user_id
+
+        session.commit()  # Коммитим пользователей
+
+        # --- Purchases ---
+        print("📦 Загружаем закупки...")
+        for p in data.get("purchases", []):
+            boogalter_id = worker_map.get(p["boogalter_login"])
+            if not boogalter_id:
+                print(f"⚠️ Бухгалтер с логином {p['boogalter_login']} не найден")
+                continue
+            purchase = Purchase(
+                boogalter_id=boogalter_id,
+                name=p["name"],
+                number=p["number"],
+                is_done=p["is_done"],
+                price=float(p["price"])
+            )
+            session.add(purchase)
+
+        # --- Tasks ---
+        print("🔧 Загружаем задачи...")
+        task_map = {}  # description → task.id
+        for t in data.get("tasks", []):
+            client_id = client_map.get(t["client_login"])
+            master_id = worker_map.get(t["master_login"]) if t.get("master_login") else None
+            if not client_id:
+                print(f"⚠️ Клиент {t['client_login']} не найден")
+                continue
+
+            task = Task(
+                client_id=client_id,
+                master_id=master_id,
+                status=t["status"],
+                # pay=float(t["pay"]),
+                pay=float(t["pay"]) if t.get("pay") is not None else None,
+                description=t["description"]
+            )
+            session.add(task)
+            session.flush()
+            task_map[t["description"]] = task.id
+
+        # --- SpentMaterial ---
+        print("🧴 Загружаем расход материалов...")
+        for sm in data.get("spent_materials", []):
+            master_id = worker_map.get(sm["master_login"])
+            task_id = task_map.get(sm["task_description"])
+            if not master_id or not task_id:
+                print(f"⚠️ Не найден мастер или задача для расхода: {sm}")
+                continue
+
+            spent = SpentMaterial(
+                master_id=master_id,
+                task_id=task_id,
+                name=sm["name"],
+                number=sm["number"]
+            )
+            session.add(spent)
+
+        session.commit()
+        print("✅ Все данные из JSON успешно загружены!")
+
+    except Exception as e:
+        session.rollback()
+        print(f"❌ Ошибка при загрузке seed-данных: {e}")
+        import traceback
+        traceback.print_exc()
+    finally:
+        session.close()
 
 @event.listens_for(Worker, 'before_insert')
 def auto_call_before_add_worker(mapper, connection, target):

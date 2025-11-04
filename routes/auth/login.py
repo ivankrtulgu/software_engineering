@@ -30,11 +30,11 @@ def login():
     
         elif user and user.check_password(password) == False:
             flash("Неверно указан пароль", "error")
-            return render_template("auth/register.html")
+            return render_template("auth/login.html") #исправил шаблоны
         
         else:
             flash("Такой пользователь не зарегистрирован", "error")
-            return render_template("auth/register.html")
+            return render_template("auth/login.html") #исправил шаблоны
 
 
 auth_login = login

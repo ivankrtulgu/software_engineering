@@ -9,6 +9,12 @@ from os.path import abspath
 
 
 app = Flask(__name__)
+
+#Временный костыль для удобства, при деплое убрать
+@app.route("/")
+def index():
+    return redirect("/auth/login")
+
 app.template_folder = Path(abspath(__file__)).parent.parent / "static" / "templates"
 print(app.template_folder)
 app.secret_key = "secret"
