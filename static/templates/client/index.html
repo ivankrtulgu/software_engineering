@@ -1,245 +1,120 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Система управления задачами</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background: #5a6fd8;
-        }
-        
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        
-        .table th, .table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .table th {
-            background-color: #f8f9fa;
-            font-weight: 600;
-        }
-        
-        .status-new {
-            background-color: #ffeb3b;
-            padding: 0.25rem 0.5rem;
-            border-radius: 3px;
-            font-size: 0.875rem;
-        }
-        
-        .status-done {
-            background-color: #4caf50;
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 3px;
-            font-size: 0.875rem;
-        }
-    </style>
-</head>
-<body>
-    
-    <header class="header">
-        <nav class="nav">
-            <h1>TaskManager Pro</h1>
-            <div class="nav-links">
-                <a href="#">Главная</a>
-                <a href="#">Задачи</a>
-                <a href="#">Материалы</a>
-                <a href="#">Клиенты</a>
-                <a href="#">Отчеты</a>
-            </div>
-        </nav>
-    </header>
+{% extends "layout.html" %}
 
-    <div class="container">
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number">24</div>
-                <div>Активные задачи</div>
+{% block title %}Мои заявки{% endblock %}
+
+{% block extra_css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_client.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_header.css') }}">
+{% endblock %}
+
+{% block extra_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/script_client.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+<h1 class="page-content__title">Заявки</h1>
+
+<div class="page-content__body">
+    <!-- Фильтры -->
+    <div class="filters">
+        <div class="filters__search">
+            <img src="{{ url_for('static', filename='images/search-normal.png') }}" alt="" class="filters__search-icon">
+            <input type="text" class="filters__search-input" placeholder="Search for ticket" />
+        </div>
+
+        <div class="filters__priority">
+            <button class="filters__priority-btn">
+            Выбрать заявки
+                <span>                    
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="filters__priority-dropdown">
+            <div class="filters__priority-option" data-priority="all">
+                Все заявки
             </div>
-            <div class="stat-card">
-                <div class="stat-number">8</div>
-                <div>Новые заказы</div>
+            <div class="filters__priority-option" data-priority="new">
+                На диагностике
             </div>
-            <div class="stat-card">
-                <div class="stat-number">156</div>
-                <div>Всего клиентов</div>
+            <div class="filters__priority-option" data-priority="ongoing">
+                Диагностика завершена
             </div>
-            <div class="stat-card">
-                <div class="stat-number">42</div>
-                <div>Материалы в наличии</div>
+            <div class="filters__priority-option" data-priority="resolved">
+                Готов к выдаче
+            </div>
+            <div class="filters__priority-option" data-priority="resolved">
+                Завершено
+            </div>
+            <div class="filters__priority-option" data-priority="resolved">
+                Отменено
+            </div>
             </div>
         </div>
 
-        <div class="card">
-            <h2>Последние задачи</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Клиент</th>
-                        <th>Мастер</th>
-                        <th>Дата</th>
-                        <th>Статус</th>
-                        <th>Сумма</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>#00125</td>
-                        <td>Иванов А.С.</td>
-                        <td>Петров В.И.</td>
-                        <td>15.12.2023</td>
-                        <td><span class="status-new">новая</span></td>
-                        <td>5 400 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>#00124</td>
-                        <td>Сидорова М.К.</td>
-                        <td>Козлов Д.С.</td>
-                        <td>14.12.2023</td>
-                        <td><span class="status-done">выполнено</span></td>
-                        <td>12 800 ₽</td>
-                    </tr>
-                    <tr>
-                        <td>#00123</td>
-                        <td>Васильев П.О.</td>
-                        <td>Никитин С.В.</td>
-                        <td>13.12.2023</td>
-                        <td><span class="status-new">в работе</span></td>
-                        <td>8 900 ₽</td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="btn" style="margin-top: 1rem;">Все задачи</button>
-        </div>
-
-        <div class="card">
-            <h2>Доступные материалы</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Материал</th>
-                        <th>Закуплено</th>
-                        <th>Израсходовано</th>
-                        <th>Доступно</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Кабель ВВГ 3х2.5</td>
-                        <td>500 м</td>
-                        <td>325 м</td>
-                        <td>175 м</td>
-                    </tr>
-                    <tr>
-                        <td>Автомат 16А</td>
-                        <td>45 шт</td>
-                        <td>28 шт</td>
-                        <td>17 шт</td>
-                    </tr>
-                    <tr>
-                        <td>Розетка Schneider</td>
-                        <td>80 шт</td>
-                        <td>42 шт</td>
-                        <td>38 шт</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <!-- <div class="filters__time">
+            На этой неделе
+            <span>                    
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+        </div> -->
     </div>
-</body>
-</html>
+
+    <!-- Вкладки -->
+    <div class="tabs">
+    <div class="tabs__item tabs__item--active" data-tab="all">
+        Все заявки
+    </div>
+    <div class="tabs__item" data-tab="new">
+        На диагностике
+    </div>
+    <div class="tabs__item" data-tab="ongoing">
+        Диагностика завершена
+    </div>
+    <div class="tabs__item" data-tab="resolved">
+        Готов к выдаче
+    </div>
+    <div class="tabs__item" data-tab="resolved">
+        Завершено
+    </div>
+    <div class="tabs__item" data-tab="resolved">
+        Отменено
+    </div>
+    </div>
+
+    <div class="ticket-list">
+        {% for task in tasks %}
+            {% if task.status == "На диагностике" %}
+                {% include "client/tickets/diagnosing.html" %}
+            {% elif task.status == "Диагностика завершена" %}
+                {% include "client/tickets/awaiting_decision.html" %}
+            {% elif task.status == "В ремонте" %}
+                {% include "client/tickets/in_repair.html" %}
+            {% elif task.status == "Готов к выдаче" %}
+                {% include "client/tickets/ready_for_pickup.html" %}
+            {% elif task.status == "Завершено" %}
+                {% include "client/tickets/completed.html" %}
+            {% elif task.status == "Отменено" %}
+                {% include "client/tickets/cancelled.html" %}
+            {% else %}
+                <div class="ticket">
+                    <p>НЕТ ШАБЛОНА ДЛЯ СТАТУСА: {{ task.status }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Пагинация -->
+    <div class="pagination">
+    <button class="pagination__button pagination__button--disabled" id="prevBtn">Previous</button>
+    <button class="pagination__button pagination__button--active" data-page="1">1</button>
+    <button class="pagination__button" data-page="2">2</button>
+    <button class="pagination__button" id="nextBtn">Next</button>
+    </div>
+</div>
+{% endblock %}

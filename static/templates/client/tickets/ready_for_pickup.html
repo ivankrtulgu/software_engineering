@@ -1,0 +1,56 @@
+<div class="ticket ticket--ready-for-pickup">
+    <div class="ticket__header">
+        <span class="ticket__status-badge ticket__status-badge--ready">{{ task.status or 'НЕТ ДАННЫХ' }}</span>
+        <div class="ticket__meta">
+            <div class="ticket__id">Заявка #{{ task.id or 'НЕТ ДАННЫХ' }}</div>
+            <div class="ticket__date">Ремонт завершён: {{ task.date or 'НЕТ ДАННЫХ' }}</div>
+        </div>
+    </div>
+
+    <div class="ticket__content">
+        <div class="ticket__section">
+            <h3 class="ticket__section-title">Устройство</h3>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Модель:</span>
+                <span class="ticket__field-value">{{ task.device_model or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Серийный номер:</span>
+                <span class="ticket__field-value">{{ task.serial_number or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Выполнено:</span>
+                <span class="ticket__field-value">{{ task.description or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+        </div>
+
+        <div class="ticket__section">
+            <h3 class="ticket__section-title">Стоимость и выдача</h3>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Диагностика:</span>
+                <span class="ticket__field-value">{% if task.pay %}{{ task.pay }} ₽{% else %}НЕТ ДАННЫХ{% endif %}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Ремонт:</span>
+                <span class="ticket__field-value">{% if task.repair_pay %}{{ task.repair_pay }} ₽{% else %}НЕТ ДАННЫХ{% endif %}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Итого:</span>
+                <span class="ticket__field-value">{% if task.repair_pay %}<strong>{{ task.repair_pay + (task.pay|default(0)) }} ₽</strong>{% else %}НЕТ ДАННЫХ{% endif %}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Адрес выдачи:</span>
+                <span class="ticket__field-value">{{ task.pickup_address or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">График:</span>
+                <span class="ticket__field-value">{{ task.pickup_schedule or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticket__actions">
+        <button class="btn btn--primary">Зарезервировать время визита</button>
+        <button class="btn btn--outline">Назначить доставку</button>
+    </div>
+</div>

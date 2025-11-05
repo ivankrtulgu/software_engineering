@@ -1,0 +1,47 @@
+<div class="ticket ticket--cancelled">
+    <div class="ticket__header">
+        <span class="ticket__status-badge ticket__status-badge--cancelled">{{ task.status or 'НЕТ ДАННЫХ' }}</span>
+        <div class="ticket__meta">
+            <div class="ticket__id">Заявка #{{ task.id or 'НЕТ ДАННЫХ' }}</div>
+            <div class="ticket__date">Отказ: {{ task.date or 'НЕТ ДАННЫХ' }}</div>
+        </div>
+    </div>
+
+    <div class="ticket__content">
+        <div class="ticket__section">
+            <h3 class="ticket__section-title">Устройство</h3>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Модель:</span>
+                <span class="ticket__field-value">{{ task.device_model or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Серийный номер:</span>
+                <span class="ticket__field-value">{{ task.serial_number or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Неисправность:</span>
+                <span class="ticket__field-value">{{ task.description or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+        </div>
+
+        <div class="ticket__section">
+            <h3 class="ticket__section-title">Финансы</h3>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Диагностика:</span>
+                <span class="ticket__field-value">{% if task.pay %}<strong>{{ task.pay }} ₽</strong>{% else %}НЕТ ДАННЫХ{% endif %}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Стоимость ремонта:</span>
+                <span class="ticket__field-value">{% if task.repair_pay %}{{ task.repair_pay }} ₽{% else %}НЕТ ДАННЫХ{% endif %}</span>
+            </div>
+            <div class="ticket__field">
+                <span class="ticket__field-label">Решение:</span>
+                <span class="ticket__field-value">{{ task.decision or 'НЕТ ДАННЫХ' }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="ticket__actions">
+        <button class="btn btn--outline">Связаться с менеджером</button>
+    </div> -->
+</div>

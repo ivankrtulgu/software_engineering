@@ -7,6 +7,9 @@ from flask_login import current_user
 from pathlib import Path
 from os.path import abspath
 
+from sqlalchemy.orm import joinedload
+
+from flask import request
 
 app = Flask(__name__)
 
@@ -33,7 +36,14 @@ def load_user(user_id):
     from models import Session,User
     try:
         session = Session()
-        user = session.query(User).get(int(user_id))
+        # user = session.query(User).get(int(user_id))
+        
+        #было добавлено для того, чтобы нельзя было заходить на страницы чужих ролей
+        user = session.query(User)\
+            .options(joinedload(User.worker), joinedload(User.client))\
+            .get(int(user_id))
+        session.expunge(user) 
+
         session.close()
         return user
     except Exception as e:
@@ -57,8 +67,19 @@ def role_required(required_role) -> Callable:
             
             if current_user.role != required_role:
                 flash('Недостаточно прав для доступа к этой странице', 'error')
-                return redirect(url_for('login'))
+                # return redirect(url_for('login'))
+                return redirect(f"/{current_user.role}")
             
             return f(*args, **kwargs)
         return decorated_function
     return decorator
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """Обработка всех несуществующих страниц"""
+    if current_user.is_authenticated:
+        flash('Страница не найдена. Вы перенаправлены на вашу главную страницу.', 'warning')
+        return redirect(f"/{current_user.role}")
+    else:
+        flash('Страница не найдена. Пожалуйста, войдите в систему.', 'warning')
+        return redirect(url_for('login'))

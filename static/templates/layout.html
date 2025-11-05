@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+{{ super() }}
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='style_client.css') }}"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_header.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="layout">
+    <!-- Сайдбар -->
+    <aside class="sidebar">
+        <div class="sidebar__header">Сервис СОФТ</div>
+        <nav class="sidebar__nav">
+            {% for item in sidebar_menu %}
+                <div class="sidebar__nav-item {% if item.active %}sidebar__nav-item--active{% endif %}"
+                    {% if item.endpoint %}onclick="location.href='{{ url_for(item.endpoint) }}'"{% endif %}>
+                    <span class="sidebar__nav-text">{{ item.title }}</span>
+                </div>
+            {% endfor %}
+        </nav>
+    </aside>
+
+
+
+    <!-- Основное содержимое -->
+    <main class="main-content">
+        <!-- Хедер -->
+        <header class="header">
+            <div class="header__menu">
+                <button class="header__menu-toggle">
+                    <img src="{{ url_for('static', filename='images/burger-button.svg') }}" alt="" class="align-left">
+                </button>
+                <div class="header__welcome">Добро пожаловать! <span>{{ current_user.full_name }}</span></div>
+            </div>
+            <div class="header__user">
+                <div class="header__notifications">
+                    <img src="{{ url_for('static', filename='images/notification.svg') }}" alt="" class="header__notification-icon">
+                </div>
+                <div class="header__user-main" id="userDropdownToggle">
+                    <div class="header__avatar">
+                        <img src="{{ url_for('static', filename='images/Profile.svg') }}" alt="Профиль" class="header__avatar-icon">
+                    </div>
+                    <div class="header__username">{{ current_user.login }}</div>
+                    <span class="header__dropdown-icon">
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L5 5L9 1" stroke="#0C0407" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <!-- Выпадающее меню -->
+                    <div class="header__user-dropdown" id="userDropdown">
+                        <a href="#" class="header__dropdown-item">Настройки</a>
+                        <a href="{{ url_for('logout') }}" class="header__dropdown-item header__dropdown-item--danger" id="logoutButton">Выход</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Контент страницы -->
+        <div class="page-content">
+            {% block page_content %}{% endblock %}
+        </div>
+    </main>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ super() }}
+<!-- <script src="{{ url_for('static', filename='script_client.js') }}"></script> -->
+<script src="{{ url_for('static', filename='js/layout.js') }}"></script>
+{% endblock %}

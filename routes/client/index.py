@@ -17,7 +17,30 @@ def client():
 
         tasks = [task.to_dict() for task in user.client.tasks]
         user_dict = user.client.to_dict()
+        print(tasks)
     finally:
         session.close()
 
-    return render_template("client/index.html", tasks=tasks, user=user_dict)
+    sidebar_menu = [
+        {
+            "title": "Мои заявки",
+            "endpoint": None,        # активная страница — без ссылки
+            "active": True
+        },
+        {
+            "title": "О нас",
+            "endpoint": "client_about",
+            "active": False
+        },
+    ]   
+
+    return render_template("client/index.html", tasks=tasks, user=user_dict, sidebar_menu=sidebar_menu)
+
+@app.route("/client/about", methods=["GET"])
+@login_required
+def client_about():
+    sidebar_menu = [
+        {"title": "Мои заявки", "endpoint": "client", "active": False},
+        {"title": "О нас", "endpoint": None, "active": True},
+    ]
+    return render_template("client/index_client_about.html", sidebar_menu=sidebar_menu)

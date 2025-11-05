@@ -301,64 +301,64 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   // === 1. Редактирование таблицы (оставляем) ===
-  const table = document.querySelector('.clients-table tbody');
-  if (table) {
-    function makeEditable(cell) {
-      const currentValue = cell.textContent.trim();
-      const fieldName = cell.dataset.field;
+  // const table = document.querySelector('.clients-table tbody');
+  // if (table) {
+  //   function makeEditable(cell) {
+  //     const currentValue = cell.textContent.trim();
+  //     const fieldName = cell.dataset.field;
 
-      let input;
-      if (fieldName === 'info' || fieldName === 'address') {
-        input = document.createElement('textarea');
-        input.rows = 2;
-        input.style.resize = 'vertical';
-      } else {
-        input = document.createElement('input');
-        input.type = 'text';
-      }
+  //     let input;
+  //     if (fieldName === 'info' || fieldName === 'address') {
+  //       input = document.createElement('textarea');
+  //       input.rows = 2;
+  //       input.style.resize = 'vertical';
+  //     } else {
+  //       input = document.createElement('input');
+  //       input.type = 'text';
+  //     }
 
-      input.value = currentValue;
-      input.style.width = '100%';
-      input.style.padding = '4px 6px';
-      input.style.border = '1px solid #6c5ce7';
-      input.style.borderRadius = '4px';
-      input.style.outline = 'none';
-      input.style.fontSize = '14px';
+  //     input.value = currentValue;
+  //     input.style.width = '100%';
+  //     input.style.padding = '4px 6px';
+  //     input.style.border = '1px solid #6c5ce7';
+  //     input.style.borderRadius = '4px';
+  //     input.style.outline = 'none';
+  //     input.style.fontSize = '14px';
 
-      cell.innerHTML = '';
-      cell.appendChild(input);
-      cell.classList.add('editing');
+  //     cell.innerHTML = '';
+  //     cell.appendChild(input);
+  //     cell.classList.add('editing');
 
-      input.focus();
+  //     input.focus();
 
-      const saveValue = () => {
-        const newValue = input.value.trim();
-        if (newValue !== currentValue) {
-          cell.textContent = newValue;
-          console.log(`Поле "${fieldName}" обновлено: ${currentValue} → ${newValue}`);
-          // Здесь можно добавить отправку на сервер
-        }
-        cell.classList.remove('editing');
-      };
+  //     const saveValue = () => {
+  //       const newValue = input.value.trim();
+  //       if (newValue !== currentValue) {
+  //         cell.textContent = newValue;
+  //         console.log(`Поле "${fieldName}" обновлено: ${currentValue} → ${newValue}`);
+  //         // Здесь можно добавить отправку на сервер
+  //       }
+  //       cell.classList.remove('editing');
+  //     };
 
-      input.addEventListener('blur', saveValue);
-      input.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          saveValue();
-        } else if (e.key === 'Escape') {
-          cell.textContent = currentValue;
-          cell.classList.remove('editing');
-        }
-      });
-    }
+  //     input.addEventListener('blur', saveValue);
+  //     input.addEventListener('keydown', function (e) {
+  //       if (e.key === 'Enter') {
+  //         saveValue();
+  //       } else if (e.key === 'Escape') {
+  //         cell.textContent = currentValue;
+  //         cell.classList.remove('editing');
+  //       }
+  //     });
+  //   }
 
-    table.addEventListener('dblclick', function (e) {
-      const cell = e.target.closest('td');
-      if (cell && !cell.classList.contains('editing')) {
-        makeEditable(cell);
-      }
-    });
-  }
+  //   table.addEventListener('dblclick', function (e) {
+  //     const cell = e.target.closest('td');
+  //     if (cell && !cell.classList.contains('editing')) {
+  //       makeEditable(cell);
+  //     }
+  //   });
+  // }
 
   // === 2. Переключение сайдбара (оставляем, если нужно) ===
   const sidebar = document.querySelector('.sidebar');
@@ -375,41 +375,41 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // === 3. Навигация по сайдбару (если у вас есть другие страницы) ===
-  // Если вы НЕ используете динамическую подгрузку других страниц — можно удалить
-  document.querySelectorAll('.sidebar__nav-item').forEach((item, index) => {
-    item.addEventListener('click', function () {
-      document.querySelectorAll('.sidebar__nav-item').forEach(el => {
-        el.classList.remove('sidebar__nav-item--active');
-      });
-      this.classList.add('sidebar__nav-item--active');
-      // Если вы не меняете содержимое страницы динамически — этот блок можно убрать
-    });
-  });
+  // // === 3. Навигация по сайдбару (если у вас есть другие страницы) ===
+  // // Если вы НЕ используете динамическую подгрузку других страниц — можно удалить
+  // document.querySelectorAll('.sidebar__nav-item').forEach((item, index) => {
+  //   item.addEventListener('click', function () {
+  //     document.querySelectorAll('.sidebar__nav-item').forEach(el => {
+  //       el.classList.remove('sidebar__nav-item--active');
+  //     });
+  //     this.classList.add('sidebar__nav-item--active');
+  //     // Если вы не меняете содержимое страницы динамически — этот блок можно убрать
+  //   });
+  // });
 
-  // === 4. Кнопка "Новая заявка" — можно оставить как заглушку ===
-  const newTicketBtn = document.querySelector('.filters__new-ticket');
-  if (newTicketBtn) {
-    newTicketBtn.addEventListener('click', function () {
-      alert('Функция создания новой записи пока не реализована.');
-      // Позже можно добавить модальное окно или добавление строки в таблицу
-    });
-  }
+  // // === 4. Кнопка "Новая заявка" — можно оставить как заглушку ===
+  // const newTicketBtn = document.querySelector('.filters__new-ticket');
+  // if (newTicketBtn) {
+  //   newTicketBtn.addEventListener('click', function () {
+  //     alert('Функция создания новой записи пока не реализована.');
+  //     // Позже можно добавить модальное окно или добавление строки в таблицу
+  //   });
+  // }
 
-  // === 5. Поиск по таблице (опционально, но полезно) ===
-  const searchInput = document.querySelector('.filters__search-input');
-  const rows = document.querySelectorAll('.clients-table tbody tr');
+  // // === 5. Поиск по таблице (опционально, но полезно) ===
+  // const searchInput = document.querySelector('.filters__search-input');
+  // const rows = document.querySelectorAll('.clients-table tbody tr');
 
-  if (searchInput && rows.length > 0) {
-    searchInput.addEventListener('input', function () {
-      const query = this.value.toLowerCase().trim();
+  // if (searchInput && rows.length > 0) {
+  //   searchInput.addEventListener('input', function () {
+  //     const query = this.value.toLowerCase().trim();
 
-      rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        row.style.display = text.includes(query) ? '' : 'none';
-      });
-    });
-  }
+  //     rows.forEach(row => {
+  //       const text = row.textContent.toLowerCase();
+  //       row.style.display = text.includes(query) ? '' : 'none';
+  //     });
+  //   });
+  // }
 
     // Обработчики для вкладок
     document.querySelectorAll('.tabs__item').forEach(tab => {
