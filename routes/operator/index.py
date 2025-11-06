@@ -21,7 +21,31 @@ def operator():
                 counter += 1
 
         masters.append(master.to_dict()|{"number_active_tasks":counter})
-    
+    clients = [
+        user.to_dict()
+        for user in session.query(User)
+            .join(User.client)  # только те, у кого есть клиентская запись
+            .order_by(User.full_name)
+            .all()
+    ]
     session.close()
+
+    sidebar_menu = [
+        {
+            "title": "Клиенты",
+            "endpoint": None,        # активная страница — без ссылки
+            "active": True
+        },
+        {
+            "title": "Заявки",
+            "endpoint": None,
+            "active": False
+        },
+        {
+            "title": "Мастера",
+            "endpoint": None,
+            "active": False
+        },
+    ]   
     
-    return render_template("operator/index.html",tasks = tasks,  masters = masters, user = current_user.to_dict())
+    return render_template("operator/index.html",tasks = tasks,  masters = masters, user = current_user.to_dict(), sidebar_menu=sidebar_menu, clients=clients)

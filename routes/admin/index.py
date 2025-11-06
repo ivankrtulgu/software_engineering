@@ -1,10 +1,11 @@
 from flask_login import current_user
-from ..app import app,role_required
+from ..app import app,role_required, login_required
 from flask import render_template,request,flash,redirect
 from models import Worker,User,Session
 
 
 @app.route("/admin",methods = ["GET","POST"]) # type: ignore
+@login_required
 @role_required("admin")
 def admin():
     if request.method == "GET":

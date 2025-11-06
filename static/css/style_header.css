@@ -1,3 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  display: flex;
+  height: 100vh;
+}
+
 /* === Адаптив: пошаговое скрытие === */
 
 /* Блок: layout */
@@ -297,4 +311,52 @@
   }
 
 
+}
+
+/* Выпадающее меню */
+.header__user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  width: 100%;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  padding: 6px 0;
+}
+
+.header__user-dropdown--active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header__dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #212529;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.header__dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+.header__dropdown-item--danger {
+  color: #dc3545;
+}
+
+.header__dropdown-item--danger:hover {
+  background-color: #ffebee;
 }

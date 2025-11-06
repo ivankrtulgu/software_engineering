@@ -1,11 +1,12 @@
 from flask_login import current_user
-from ..app import app, login_required
+from ..app import app, login_required, role_required
 from flask import render_template
 from models import Task, User, Session
 from sqlalchemy.orm import joinedload
 
 @app.route("/client", methods=["GET"])
 @login_required
+@role_required("client")
 def client():
     session = Session()
     try:
@@ -38,6 +39,7 @@ def client():
 
 @app.route("/client/about", methods=["GET"])
 @login_required
+@role_required("client")
 def client_about():
     sidebar_menu = [
         {"title": "Мои заявки", "endpoint": "client", "active": False},

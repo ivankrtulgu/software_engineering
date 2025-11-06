@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}Панель оператора{% endblock %}
+
+{% block extra_css %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style_operator.css') }}">
+{% endblock %}
+
+{% block extra_scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/script_operator.js') }}"></script>
+{% endblock %}
+
+{% block page_content %}
+<h1 class="page-content__title">Клиенты</h1>
+
+<div class="page-content__body">
+    <!-- Фильтры -->
+    <div class="filters">
+        <div class="filters__search">
+            <img src="{{ url_for('static', filename='images/search-normal.png') }}" alt="" class="filters__search-icon">
+            <input type="text" class="filters__search-input" placeholder="Search for ticket" />
+        </div>
+
+        <button class="filters__new-client filters__new-ticket">
+            Добавить клиента
+        </button>
+    </div>
+
+    <!-- Таблица -->
+    <div class="ticket-list">
+    <div class="table-container">
+        <table class="clients-table">
+        <thead>
+            <tr>
+            <th>№</th>
+            <th>Клиент</th>
+            <th>Логин</th>
+            <th>user_id</th>
+            <th>Роль</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if clients and clients|length > 0 %}
+            {% for client in clients %}
+                <tr>
+                <td data-field="num">{{ loop.index }}</td>
+                <td data-field="client">{{ client.full_name or "—" }}</td>
+                <td data-field="login">{{ client.login or "—" }}</td>
+                <td data-field="user_id">{{ client.user_id or "—" }}</td>
+                <td data-field="role">{{ client.role or "—" }}</td>
+                </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="5" style="text-align:center; color:#777;">Нет клиентов для отображения</td>
+            </tr>
+            {% endif %}
+        </tbody>
+        </table>
+    </div>
+    </div>
+
+
+</div>
+{% endblock %}
