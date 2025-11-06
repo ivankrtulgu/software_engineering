@@ -1,0 +1,1436 @@
+{
+  "workers": [
+    {
+      "full_name": "Админ Иванов",
+      "login": "admin",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "full_name": "Оператор Петров",
+      "login": "operator",
+      "password": "operator123",
+      "role": "operator"
+    },
+    {
+      "full_name": "Бухгалтер Сидорова",
+      "login": "boogalter",
+      "password": "boogalter123",
+      "role": "boogalter"
+    },
+    {
+      "full_name": "Мастер 1",
+      "login": "master1",
+      "password": "master123",
+      "role": "master"
+    },
+    {
+      "full_name": "Мастер 2",
+      "login": "master2",
+      "password": "master123",
+      "role": "master"
+    },
+    {
+      "full_name": "Мастер 3",
+      "login": "master3",
+      "password": "master123",
+      "role": "master"
+    },
+    {
+      "full_name": "Мастер 4",
+      "login": "master4",
+      "password": "master123",
+      "role": "master"
+    },
+    {
+      "full_name": "Мастер 5",
+      "login": "master5",
+      "password": "master123",
+      "role": "master"
+    },
+    {
+      "full_name": "Мастер 6",
+      "login": "master6",
+      "password": "master123",
+      "role": "master"
+    },
+    {
+      "full_name": "Мастер 7",
+      "login": "master7",
+      "password": "master123",
+      "role": "master"
+    }
+  ],
+  "clients": [
+    {
+      "full_name": "Клиент 1",
+      "login": "client1",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 2",
+      "login": "client2",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 3",
+      "login": "client3",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 4",
+      "login": "client4",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 5",
+      "login": "client5",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 6",
+      "login": "client6",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 7",
+      "login": "client7",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 8",
+      "login": "client8",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 9",
+      "login": "client9",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 10",
+      "login": "client10",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 11",
+      "login": "client11",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 12",
+      "login": "client12",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 13",
+      "login": "client13",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 14",
+      "login": "client14",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 15",
+      "login": "client15",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 16",
+      "login": "client16",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 17",
+      "login": "client17",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 18",
+      "login": "client18",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 19",
+      "login": "client19",
+      "password": "client123"
+    },
+    {
+      "full_name": "Клиент 20",
+      "login": "client20",
+      "password": "client123"
+    }
+  ],
+  "purchases": [
+    {
+      "boogalter_login": "boogalter",
+      "name": "Экран iPhone 13",
+      "number": 18,
+      "is_done": true,
+      "price": 12000
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Экран iPhone 14",
+      "number": 16,
+      "is_done": true,
+      "price": 14000
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Экран Samsung S22",
+      "number": 9,
+      "is_done": true,
+      "price": 9500
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Экран Samsung S23",
+      "number": 13,
+      "is_done": true,
+      "price": 11000
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Аккумулятор iPhone 13",
+      "number": 18,
+      "is_done": true,
+      "price": 3500
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Аккумулятор iPhone 14",
+      "number": 10,
+      "is_done": true,
+      "price": 4000
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 10,
+      "is_done": true,
+      "price": 8000
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "SSD 1TB NVMe",
+      "number": 5,
+      "is_done": true,
+      "price": 7000
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Защитное стекло iPhone 13",
+      "number": 11,
+      "is_done": true,
+      "price": 600
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Термопаста Arctic MX-4",
+      "number": 15,
+      "is_done": true,
+      "price": 500
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Камера задняя iPhone 13",
+      "number": 14,
+      "is_done": true,
+      "price": 6000
+    },
+    {
+      "boogalter_login": "boogalter",
+      "name": "Кабель USB-C",
+      "number": 100,
+      "is_done": true,
+      "price": 800.0
+    }
+  ],
+  "tasks": [
+    {
+      "client_login": "client6",
+      "master_login": "master1",
+      "status": "Завершено",
+      "pay": 10470.62,
+      "description": "Восстановление после залития на Samsung S23"
+    },
+    {
+      "client_login": "client7",
+      "master_login": "master5",
+      "status": "Готов к выдаче",
+      "pay": 6382.57,
+      "description": "Установка ОС на Samsung S23"
+    },
+    {
+      "client_login": "client20",
+      "master_login": "master6",
+      "status": "Отменено",
+      "pay": 4117.66,
+      "description": "Ремонт разъёма зарядки на iPhone 14"
+    },
+    {
+      "client_login": "client8",
+      "master_login": "master5",
+      "status": "Диагностика завершена",
+      "pay": 3410.71,
+      "description": "Установка ОС на MacBook Air M1"
+    },
+    {
+      "client_login": "client20",
+      "master_login": "master6",
+      "status": "На диагностике",
+      "pay": 2587.28,
+      "description": "Ремонт камеры на Dell XPS 15"
+    },
+    {
+      "client_login": "client15",
+      "master_login": "master4",
+      "status": "В ремонте",
+      "pay": 4291.69,
+      "description": "Установка ОС на MacBook Air M1"
+    },
+    {
+      "client_login": "client3",
+      "master_login": "master5",
+      "status": "В ремонте",
+      "pay": 10398.64,
+      "description": "Замена аккумулятора на Samsung S23"
+    },
+    {
+      "client_login": "client11",
+      "master_login": "master6",
+      "status": "Готов к выдаче",
+      "pay": 10002.46,
+      "description": "Восстановление после залития на Dell XPS 15"
+    },
+    {
+      "client_login": "client10",
+      "master_login": "master4",
+      "status": "В ремонте",
+      "pay": 5666.55,
+      "description": "Восстановление после залития на Samsung S23"
+    },
+    {
+      "client_login": "client5",
+      "master_login": "master6",
+      "status": "Готов к выдаче",
+      "pay": 6328.78,
+      "description": "Ремонт разъёма зарядки на Samsung S23"
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master2",
+      "status": "Готов к выдаче",
+      "pay": 2997.73,
+      "description": "Установка ОС на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client14",
+      "master_login": "master4",
+      "status": "В ремонте",
+      "pay": 3754.97,
+      "description": "Ремонт камеры на Samsung S23"
+    },
+    {
+      "client_login": "client10",
+      "master_login": "master7",
+      "status": "Диагностика завершена",
+      "pay": 5088.63,
+      "description": "Замена аккумулятора на iPhone 14"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master6",
+      "status": "Отменено",
+      "pay": 4592.38,
+      "description": "Ремонт разъёма зарядки на iPad Air 5"
+    },
+    {
+      "client_login": "client8",
+      "master_login": "master1",
+      "status": "Диагностика завершена",
+      "pay": 12401.66,
+      "description": "Установка ОС на Samsung S22"
+    },
+    {
+      "client_login": "client9",
+      "master_login": "master4",
+      "status": "Диагностика завершена",
+      "pay": 12898.24,
+      "description": "Замена экрана на MacBook Air M1"
+    },
+    {
+      "client_login": "client9",
+      "master_login": "master5",
+      "status": "Готов к выдаче",
+      "pay": 4897.2,
+      "description": "Замена клавиатуры на Samsung S23"
+    },
+    {
+      "client_login": "client20",
+      "master_login": "master2",
+      "status": "В ремонте",
+      "pay": 14019.87,
+      "description": "Чистка от пыли на iPhone 14"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master1",
+      "status": "В ремонте",
+      "pay": 7464.76,
+      "description": "Замена аккумулятора на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client2",
+      "master_login": "master5",
+      "status": "Завершено",
+      "pay": 9262.63,
+      "description": "Ремонт разъёма зарядки на Samsung S23"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master5",
+      "status": "Завершено",
+      "pay": 2754.87,
+      "description": "Чистка от пыли на iPhone 14"
+    },
+    {
+      "client_login": "client8",
+      "master_login": "master3",
+      "status": "На диагностике",
+      "pay": 5799.4,
+      "description": "Восстановление после залития на Samsung S22"
+    },
+    {
+      "client_login": "client5",
+      "master_login": "master7",
+      "status": "На диагностике",
+      "pay": 2724.97,
+      "description": "Восстановление после залития на Samsung S22"
+    },
+    {
+      "client_login": "client6",
+      "master_login": "master5",
+      "status": "Готов к выдаче",
+      "pay": 12050.13,
+      "description": "Восстановление после залития на Samsung S23"
+    },
+    {
+      "client_login": "client9",
+      "master_login": "master2",
+      "status": "На диагностике",
+      "pay": 2755.43,
+      "description": "Замена аккумулятора на iPhone 14"
+    },
+    {
+      "client_login": "client17",
+      "master_login": "master6",
+      "status": "Диагностика завершена",
+      "pay": 11868.92,
+      "description": "Замена клавиатуры на iPad Air 5"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master2",
+      "status": "Завершено",
+      "pay": 5640.34,
+      "description": "Установка ОС на iPhone 14"
+    },
+    {
+      "client_login": "client9",
+      "master_login": "master4",
+      "status": "На диагностике",
+      "pay": 11145.76,
+      "description": "Установка ОС на Samsung S22"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master5",
+      "status": "Завершено",
+      "pay": 7745.73,
+      "description": "Замена аккумулятора на iPhone 14"
+    },
+    {
+      "client_login": "client4",
+      "master_login": "master4",
+      "status": "Отменено",
+      "pay": 4726.55,
+      "description": "Ремонт разъёма зарядки на Samsung S23"
+    },
+    {
+      "client_login": "client2",
+      "master_login": "master4",
+      "status": "На диагностике",
+      "pay": 14913.9,
+      "description": "Ремонт разъёма зарядки на iPad Air 5"
+    },
+    {
+      "client_login": "client19",
+      "master_login": "master1",
+      "status": "В ремонте",
+      "pay": 13624.45,
+      "description": "Замена экрана на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client4",
+      "master_login": "master4",
+      "status": "На диагностике",
+      "pay": 6743.01,
+      "description": "Восстановление после залития на Dell XPS 15"
+    },
+    {
+      "client_login": "client20",
+      "master_login": "master7",
+      "status": "Диагностика завершена",
+      "pay": 11191.36,
+      "description": "Замена SSD на iPhone 13"
+    },
+    {
+      "client_login": "client3",
+      "master_login": "master1",
+      "status": "На диагностике",
+      "pay": 4162.55,
+      "description": "Чистка от пыли на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client10",
+      "master_login": "master5",
+      "status": "В ремонте",
+      "pay": 6294.44,
+      "description": "Замена SSD на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master3",
+      "status": "В ремонте",
+      "pay": 6120.02,
+      "description": "Чистка от пыли на iPhone 14"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master2",
+      "status": "Завершено",
+      "pay": 7346.79,
+      "description": "Замена аккумулятора на iPhone 13"
+    },
+    {
+      "client_login": "client17",
+      "master_login": "master5",
+      "status": "В ремонте",
+      "pay": 6699.68,
+      "description": "Замена экрана на iPhone 13"
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master6",
+      "status": "Завершено",
+      "pay": 5572.31,
+      "description": "Замена экрана на iPad Air 5"
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master6",
+      "status": "Готов к выдаче",
+      "pay": 2846.3,
+      "description": "Замена SSD на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client19",
+      "master_login": "master2",
+      "status": "Готов к выдаче",
+      "pay": 7350.97,
+      "description": "Чистка от пыли на Samsung S23"
+    },
+    {
+      "client_login": "client8",
+      "master_login": "master4",
+      "status": "Готов к выдаче",
+      "pay": 4913.03,
+      "description": "Ремонт разъёма зарядки на Samsung S23"
+    },
+    {
+      "client_login": "client7",
+      "master_login": "master5",
+      "status": "На диагностике",
+      "pay": 8062.87,
+      "description": "Замена клавиатуры на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client4",
+      "master_login": "master2",
+      "status": "В ремонте",
+      "pay": 2675.52,
+      "description": "Замена клавиатуры на Dell XPS 15"
+    },
+    {
+      "client_login": "client8",
+      "master_login": "master1",
+      "status": "В ремонте",
+      "pay": 2018.38,
+      "description": "Восстановление после залития на Samsung S23"
+    },
+    {
+      "client_login": "client7",
+      "master_login": "master5",
+      "status": "Завершено",
+      "pay": 7293.16,
+      "description": "Ремонт камеры на MacBook Air M1"
+    },
+    {
+      "client_login": "client11",
+      "master_login": "master7",
+      "status": "Отменено",
+      "pay": 5540.97,
+      "description": "Установка ОС на Samsung S23"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master4",
+      "status": "Завершено",
+      "pay": 6624.52,
+      "description": "Замена экрана на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client20",
+      "master_login": "master5",
+      "status": "Готов к выдаче",
+      "pay": 12213.39,
+      "description": "Замена аккумулятора на MacBook Air M1"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master1",
+      "status": "На диагностике",
+      "pay": 6612.95,
+      "description": "Ремонт камеры на Dell XPS 15"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master1",
+      "status": "На диагностике",
+      "pay": 7221.2,
+      "description": "Замена SSD на iPhone 14"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master1",
+      "status": "В ремонте",
+      "pay": 14111.97,
+      "description": "Установка ОС на iPhone 14"
+    },
+    {
+      "client_login": "client3",
+      "master_login": "master3",
+      "status": "В ремонте",
+      "pay": 4943.06,
+      "description": "Установка ОС на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client5",
+      "master_login": "master7",
+      "status": "На диагностике",
+      "pay": 14817.4,
+      "description": "Замена SSD на Samsung S22"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master4",
+      "status": "Готов к выдаче",
+      "pay": 3514.78,
+      "description": "Замена экрана на iPad Air 5"
+    },
+    {
+      "client_login": "client7",
+      "master_login": "master2",
+      "status": "Отменено",
+      "pay": 12507.66,
+      "description": "Замена SSD на iPhone 14"
+    },
+    {
+      "client_login": "client17",
+      "master_login": "master4",
+      "status": "В ремонте",
+      "pay": 8333.23,
+      "description": "Ремонт разъёма зарядки на Samsung S23"
+    },
+    {
+      "client_login": "client12",
+      "master_login": "master3",
+      "status": "Отменено",
+      "pay": 2494.84,
+      "description": "Замена аккумулятора на iPhone 13"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master3",
+      "status": "На диагностике",
+      "pay": 13204.53,
+      "description": "Ремонт камеры на iPad Air 5"
+    },
+    {
+      "client_login": "client7",
+      "master_login": "master5",
+      "status": "Отменено",
+      "pay": 9866.41,
+      "description": "Замена SSD на Samsung S22"
+    },
+    {
+      "client_login": "client17",
+      "master_login": "master7",
+      "status": "В ремонте",
+      "pay": 7148.61,
+      "description": "Восстановление после залития на iPhone 14"
+    },
+    {
+      "client_login": "client9",
+      "master_login": "master5",
+      "status": "Диагностика завершена",
+      "pay": 4923.32,
+      "description": "Замена SSD на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master6",
+      "status": "Диагностика завершена",
+      "pay": 6183.57,
+      "description": "Замена аккумулятора на Samsung S22"
+    },
+    {
+      "client_login": "client2",
+      "master_login": "master1",
+      "status": "Готов к выдаче",
+      "pay": 2084.47,
+      "description": "Замена аккумулятора на iPhone 14"
+    },
+    {
+      "client_login": "client18",
+      "master_login": "master5",
+      "status": "Готов к выдаче",
+      "pay": 11608.35,
+      "description": "Чистка от пыли на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client3",
+      "master_login": "master2",
+      "status": "Отменено",
+      "pay": 4337.85,
+      "description": "Ремонт разъёма зарядки на iPhone 14"
+    },
+    {
+      "client_login": "client12",
+      "master_login": "master6",
+      "status": "На диагностике",
+      "pay": 10895.57,
+      "description": "Ремонт камеры на Dell XPS 15"
+    },
+    {
+      "client_login": "client18",
+      "master_login": "master4",
+      "status": "В ремонте",
+      "pay": 12527.17,
+      "description": "Чистка от пыли на iPad Air 5"
+    },
+    {
+      "client_login": "client11",
+      "master_login": "master5",
+      "status": "В ремонте",
+      "pay": 4585.05,
+      "description": "Чистка от пыли на Dell XPS 15"
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master4",
+      "status": "В ремонте",
+      "pay": 11173.76,
+      "description": "Чистка от пыли на MacBook Air M1"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master2",
+      "status": "Диагностика завершена",
+      "pay": 9701.69,
+      "description": "Замена экрана на Samsung S23"
+    },
+    {
+      "client_login": "client11",
+      "master_login": "master6",
+      "status": "Завершено",
+      "pay": 2070.18,
+      "description": "Ремонт разъёма зарядки на iPad Air 5"
+    },
+    {
+      "client_login": "client7",
+      "master_login": "master1",
+      "status": "Готов к выдаче",
+      "pay": 14266.55,
+      "description": "Замена экрана на iPhone 14"
+    },
+    {
+      "client_login": "client18",
+      "master_login": "master4",
+      "status": "В ремонте",
+      "pay": 6376.62,
+      "description": "Ремонт камеры на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client4",
+      "master_login": "master2",
+      "status": "В ремонте",
+      "pay": 2063.62,
+      "description": "Замена клавиатуры на MacBook Air M1"
+    },
+    {
+      "client_login": "client9",
+      "master_login": "master1",
+      "status": "Отменено",
+      "pay": 9158.7,
+      "description": "Замена экрана на Samsung S22"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master5",
+      "status": "Завершено",
+      "pay": 14723.58,
+      "description": "Замена аккумулятора на iPad Air 5"
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master4",
+      "status": "Готов к выдаче",
+      "pay": 8735.83,
+      "description": "Замена клавиатуры на MacBook Pro 14\""
+    },
+    {
+      "client_login": "client10",
+      "master_login": "master3",
+      "status": "Отменено",
+      "pay": 7536.39,
+      "description": "Ремонт камеры на MacBook Air M1"
+    },
+    {
+      "client_login": "client15",
+      "master_login": "master7",
+      "status": "На диагностике",
+      "pay": 6846.62,
+      "description": "Ремонт разъёма зарядки на MacBook Air M1"
+    },
+    {
+      "client_login": "client19",
+      "master_login": "master6",
+      "status": "Отменено",
+      "pay": 4300.45,
+      "description": "Установка ОС на MacBook Air M1"
+    },
+    {
+      "client_login": "client2",
+      "master_login": "master3",
+      "status": "В ремонте",
+      "pay": 8065.78,
+      "description": "Ремонт камеры на Samsung S22"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master7",
+      "status": "На диагностике",
+      "pay": 8718.25,
+      "description": "Чистка от пыли на MacBook Air M1"
+    },
+    {
+      "client_login": "client16",
+      "master_login": "master1",
+      "status": "В ремонте",
+      "pay": 11575.74,
+      "description": "Ремонт разъёма зарядки на MacBook Air M1"
+    },
+    {
+      "client_login": "client19",
+      "master_login": "master1",
+      "status": "Отменено",
+      "pay": 11762.3,
+      "description": "Чистка от пыли на Dell XPS 15"
+    },
+    {
+      "client_login": "client19",
+      "master_login": "master2",
+      "status": "Отменено",
+      "pay": 10904.23,
+      "description": "Замена экрана на iPhone 13"
+    },
+    {
+      "client_login": "client5",
+      "master_login": "master6",
+      "status": "На диагностике",
+      "pay": 2296.86,
+      "description": "Ремонт разъёма зарядки на iPhone 14"
+    },
+    {
+      "client_login": "client1",
+      "master_login": "master2",
+      "status": "На диагностике",
+      "pay": 14302.66,
+      "description": "Замена аккумулятора на iPad Air 5"
+    },
+    {
+      "client_login": "client2",
+      "master_login": "master5",
+      "status": "Отменено",
+      "pay": 7379.45,
+      "description": "Восстановление после залития на iPhone 14"
+    },
+    {
+      "client_login": "client13",
+      "master_login": "master7",
+      "status": "Диагностика завершена",
+      "pay": 11072.6,
+      "description": "Установка ОС на MacBook Air M1"
+    },
+    {
+      "client_login": "client5",
+      "master_login": "master7",
+      "status": "Готов к выдаче",
+      "pay": 5296.77,
+      "description": "Замена SSD на Samsung S22"
+    },
+    {
+      "client_login": "client17",
+      "master_login": "master5",
+      "status": "Отменено",
+      "pay": 14429.89,
+      "description": "Замена SSD на Samsung S23"
+    },
+    {
+      "client_login": "client2",
+      "master_login": "master4",
+      "status": "На диагностике",
+      "pay": 9430.14,
+      "description": "Установка ОС на iPhone 14"
+    },
+    {
+      "client_login": "client15",
+      "master_login": "master2",
+      "status": "Диагностика завершена",
+      "pay": 7212.26,
+      "description": "Замена клавиатуры на Samsung S22"
+    },
+    {
+      "client_login": "client15",
+      "master_login": "master6",
+      "status": "В ремонте",
+      "pay": 8309.11,
+      "description": "Ремонт разъёма зарядки на iPad Air 5"
+    },
+    {
+      "client_login": "client5",
+      "master_login": "master1",
+      "status": "Диагностика завершена",
+      "pay": 6950.83,
+      "description": "Ремонт камеры на Samsung S23"
+    },
+    {
+      "client_login": "client14",
+      "master_login": "master4",
+      "status": "Завершено",
+      "pay": 3343.98,
+      "description": "Ремонт разъёма зарядки на iPhone 14"
+    },
+    {
+      "client_login": "client14",
+      "master_login": "master3",
+      "status": "Готов к выдаче",
+      "pay": 12023.23,
+      "description": "Чистка от пыли на Samsung S22"
+    },
+    {
+      "client_login": "client20",
+      "master_login": "master5",
+      "status": "Завершено",
+      "pay": 14459.97,
+      "description": "Установка ОС на MacBook Pro 14\""
+    }
+  ],
+  "spent_materials": [
+    {
+      "master_login": "master4",
+      "task_description": "Восстановление после залития на Samsung S23",
+      "name": "Экран Samsung S22",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Установка ОС на Samsung S23",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Ремонт разъёма зарядки на iPhone 14",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Установка ОС на MacBook Air M1",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Ремонт камеры на Dell XPS 15",
+      "name": "Защитное стекло iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Установка ОС на MacBook Air M1",
+      "name": "Термопаста Arctic MX-4",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена аккумулятора на Samsung S23",
+      "name": "Термопаста Arctic MX-4",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Восстановление после залития на Dell XPS 15",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Восстановление после залития на Samsung S23",
+      "name": "Аккумулятор iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Ремонт разъёма зарядки на Samsung S23",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Установка ОС на MacBook Pro 14\"",
+      "name": "Экран Samsung S22",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Ремонт камеры на Samsung S23",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Замена аккумулятора на iPhone 14",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Ремонт разъёма зарядки на iPad Air 5",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Установка ОС на Samsung S22",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Замена экрана на MacBook Air M1",
+      "name": "Экран Samsung S22",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Замена клавиатуры на Samsung S23",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Чистка от пыли на iPhone 14",
+      "name": "Аккумулятор iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Замена аккумулятора на MacBook Pro 14\"",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Ремонт разъёма зарядки на Samsung S23",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Чистка от пыли на iPhone 14",
+      "name": "Аккумулятор iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Восстановление после залития на Samsung S22",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Восстановление после залития на Samsung S22",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Восстановление после залития на Samsung S23",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Замена аккумулятора на iPhone 14",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Замена клавиатуры на iPad Air 5",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Установка ОС на iPhone 14",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Установка ОС на Samsung S22",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Замена аккумулятора на iPhone 14",
+      "name": "Термопаста Arctic MX-4",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Ремонт разъёма зарядки на Samsung S23",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Ремонт разъёма зарядки на iPad Air 5",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена экрана на MacBook Pro 14\"",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Восстановление после залития на Dell XPS 15",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Замена SSD на iPhone 13",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Чистка от пыли на MacBook Pro 14\"",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Замена SSD на MacBook Pro 14\"",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Чистка от пыли на iPhone 14",
+      "name": "Экран Samsung S22",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Замена аккумулятора на iPhone 13",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена экрана на iPhone 13",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена экрана на iPad Air 5",
+      "name": "Камера задняя iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Замена SSD на MacBook Pro 14\"",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Чистка от пыли на Samsung S23",
+      "name": "Защитное стекло iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Ремонт разъёма зарядки на Samsung S23",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Замена клавиатуры на MacBook Pro 14\"",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Замена клавиатуры на Dell XPS 15",
+      "name": "Экран Samsung S22",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Восстановление после залития на Samsung S23",
+      "name": "Аккумулятор iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Ремонт камеры на MacBook Air M1",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Установка ОС на Samsung S23",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Замена экрана на MacBook Pro 14\"",
+      "name": "Аккумулятор iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Замена аккумулятора на MacBook Air M1",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Ремонт камеры на Dell XPS 15",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена SSD на iPhone 14",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Установка ОС на iPhone 14",
+      "name": "Камера задняя iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Установка ОС на MacBook Pro 14\"",
+      "name": "Камера задняя iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Замена SSD на Samsung S22",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Замена экрана на iPad Air 5",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена SSD на iPhone 14",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Ремонт разъёма зарядки на Samsung S23",
+      "name": "Камера задняя iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Замена аккумулятора на iPhone 13",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Ремонт камеры на iPad Air 5",
+      "name": "Защитное стекло iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Замена SSD на Samsung S22",
+      "name": "Защитное стекло iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Восстановление после залития на iPhone 14",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена SSD на MacBook Pro 14\"",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master5",
+      "task_description": "Замена аккумулятора на Samsung S22",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Замена аккумулятора на iPhone 14",
+      "name": "Аккумулятор iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Чистка от пыли на MacBook Pro 14\"",
+      "name": "Экран Samsung S22",
+      "number": 1
+    },
+    {
+      "master_login": "master2",
+      "task_description": "Ремонт разъёма зарядки на iPhone 14",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master4",
+      "task_description": "Ремонт камеры на Dell XPS 15",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Чистка от пыли на iPad Air 5",
+      "name": "Экран iPhone 14",
+      "number": 1
+    },
+    {
+      "master_login": "master7",
+      "task_description": "Чистка от пыли на Dell XPS 15",
+      "name": "Защитное стекло iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Чистка от пыли на MacBook Air M1",
+      "name": "Экран Samsung S22",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Замена экрана на Samsung S23",
+      "name": "Аккумулятор iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Ремонт разъёма зарядки на iPad Air 5",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Замена экрана на iPhone 14",
+      "name": "Экран iPhone 13",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Ремонт камеры на MacBook Pro 14\"",
+      "name": "Термопаста Arctic MX-4",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Замена клавиатуры на MacBook Air M1",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master3",
+      "task_description": "Замена экрана на Samsung S22",
+      "name": "SSD 1TB NVMe",
+      "number": 1
+    },
+    {
+      "master_login": "master1",
+      "task_description": "Замена аккумулятора на iPad Air 5",
+      "name": "Клавиатура MacBook Air M1",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Замена клавиатуры на MacBook Pro 14\"",
+      "name": "Экран Samsung S23",
+      "number": 1
+    },
+    {
+      "master_login": "master6",
+      "task_description": "Ремонт камеры на MacBook Air M1",
+      "name": "Экран Samsung S23",
+      "number": 1
+    }
+  ]
+}

@@ -21,10 +21,10 @@
     <div class="filters">
         <div class="filters__search">
             <img src="{{ url_for('static', filename='images/search-normal.png') }}" alt="" class="filters__search-icon">
-            <input type="text" class="filters__search-input" placeholder="Search for ticket" />
+            <input type="text" class="filters__search-input" placeholder="Введите номер заявки" />
         </div>
 
-        <div class="filters__priority">
+        <!-- <div class="filters__priority">
             <button class="filters__priority-btn">
             Выбрать заявки
                 <span>                    
@@ -53,7 +53,7 @@
                 Отменено
             </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="filters__time">
             На этой неделе
@@ -67,27 +67,31 @@
 
     <!-- Вкладки -->
     <div class="tabs">
-    <div class="tabs__item tabs__item--active" data-tab="all">
-        Все заявки
-    </div>
-    <div class="tabs__item" data-tab="new">
-        На диагностике
-    </div>
-    <div class="tabs__item" data-tab="ongoing">
-        Диагностика завершена
-    </div>
-    <div class="tabs__item" data-tab="resolved">
-        Готов к выдаче
-    </div>
-    <div class="tabs__item" data-tab="resolved">
-        Завершено
-    </div>
-    <div class="tabs__item" data-tab="resolved">
-        Отменено
-    </div>
+        <div class="tabs__item tabs__item--active" data-tab="all">
+            Все заявки
+        </div>
+        <div class="tabs__item" data-tab="На диагностике">
+            На диагностике
+        </div>
+        <div class="tabs__item" data-tab="Диагностика завершена">
+            Диагностика завершена
+        </div>
+        <div class="tabs__item" data-tab="В ремонте">
+            В ремонте
+        </div>
+        <div class="tabs__item" data-tab="Готов к выдаче">
+            Готов к выдаче
+        </div>
+        <div class="tabs__item" data-tab="Завершено">
+            Завершено
+        </div>
+        <div class="tabs__item" data-tab="Отменено">
+            Отменено
+        </div>
     </div>
 
-    <div class="ticket-list">
+
+    <div class="ticket-list" id="ticketList">
         {% for task in tasks %}
             {% if task.status == "На диагностике" %}
                 {% include "client/tickets/diagnosing.html" %}
@@ -109,12 +113,6 @@
         {% endfor %}
     </div>
 
-    <!-- Пагинация -->
-    <div class="pagination">
-    <button class="pagination__button pagination__button--disabled" id="prevBtn">Previous</button>
-    <button class="pagination__button pagination__button--active" data-page="1">1</button>
-    <button class="pagination__button" data-page="2">2</button>
-    <button class="pagination__button" id="nextBtn">Next</button>
-    </div>
+    <div class="pagination" id="pagination"></div>
 </div>
 {% endblock %}

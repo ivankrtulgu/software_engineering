@@ -284,7 +284,7 @@ body {
   flex-direction: column;
   gap: 20px;
   padding-top: 8px;
-  border-top: 1px solid #f0f0f0;
+  /* border-top: 1px solid #f0f0f0; */
   width: 100%;
 }
 
@@ -429,6 +429,7 @@ body {
 .pagination__button:hover:not(.pagination__button--disabled) {
   background-color: #f8f9fa;
   border-color: #6c5ce7;
+  color: #6c5ce7;
 }
 
 /* === Скрытые элементы и уведомления === */
